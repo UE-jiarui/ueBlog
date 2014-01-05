@@ -1,0 +1,8 @@
+<div class="login_wrap">
+	<form name="login_form" novalidate ng-submit="login()">
+		<input type="text" name="username" ng-model="loginUser.username" placeholder="用户名 / 邮箱" required/>
+		<input type="password" name="password" ng-model="loginUser.password" placeholder="密码" required />
+		<input type="submit" ng-disabled="login_form.$invalid" value="登录">
+		<p ng-show="err">{{err}}</p>
+	</form>
+</div>
