@@ -13,4 +13,4 @@ first commit by xuhua
 在根目录执行命令：node app，程序启动成功！
 
 
-想参与开发的少年，可以fork然后自己修修改改，有一定成果了pull request请求合并代码！
+参与开发的少年们，可以fork然后自己修修改改，有一定成果了pull request请求合并代码！
