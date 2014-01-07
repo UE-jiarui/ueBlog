@@ -1,6 +1,5 @@
 require 'coffee-script'
 path = require 'path'
-index = require './index'
 user = require './user'
 blog = require './blog'
 

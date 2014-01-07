@@ -9,6 +9,7 @@
     "connect-flash":"*",
     "colors": "*",
     "marked": "*",
+    "coffee-script":"*",
     "nodemailer":"*"
   },
   "devDependencies": {
