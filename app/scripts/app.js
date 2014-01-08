@@ -13,7 +13,7 @@ var BlogDirectives = angular.module('ueBlogApp.directives', []);
 var BlogFilters = angular.module('ueBlogApp.filters', []);
 
 //@xuhua:尽量不要直接在Module中引入依赖，在分模块中分别引入子依赖
-var blogApp = angular.module('ueBlogApp', ['ueBlogApp.controllers', 'ueBlogApp.services', 'ueBlogApp.directives' , 'ueBlogApp.filters'])
+var blogApp = angular.module('ueBlogApp', ['ui.bootstrap', 'ueBlogApp.controllers', 'ueBlogApp.services', 'ueBlogApp.directives' , 'ueBlogApp.filters', 'ngResource'])
 blogApp.config(['$routeProvider', '$locationProvider',function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
   $routeProvider

@@ -9,7 +9,11 @@
     "angular-cookies": "~1.0.7",
     "angular-bootstrap": "~0.9.0",
     "jquery": "~2.0.3",
-    "less": "~1.6.0"
+    "less": "~1.6.0",
+    "font-awesome": "~4.0.3",
+    "angular-translate": "~1.1.1",
+    "wysihtml5": "~0.3.0",
+    "bootstrap-wysihtml5": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",

@@ -6,6 +6,7 @@
  * @author xuhua
  */
 BlogContrllers.controller('LoginCtrl', ['$scope', '$http', '$location', function($scope, $http, $location){
+
 	$scope.loginUser = {
 		username: '',
 		password: ''

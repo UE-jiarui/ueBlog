@@ -5,4 +5,9 @@
  */
 BlogContrllers.controller('PostCtrl',['$scope', '$http', function($scope, $http){
 
-}]);
+}])
+.controller("DropdownCtrl", ['$scope', 'locale',
+	function($scope, locale) {
+		$scope.items = locale.editorMsg.font_styles;
+	}
+])

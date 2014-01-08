@@ -22,8 +22,10 @@
 
         <!-- build:css({.tmp,app}) styles/main.css -->
         <link rel="stylesheet" href="styles/bootstrap.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
         <link rel="stylesheet" href="styles/pure.css">
         <link rel="stylesheet/less" style="text/css" href="styles/main.less">
+        <link rel="stylesheet" href="bower_components/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css">
         <!-- endbuild -->
 </head>
 <body>
@@ -65,6 +67,9 @@
                   <li ng-hide='loginName'>
                     <a ng-href="/login">登录</a>
                   </li>
+                  <li ng-show='loginName'>
+                    <a ng-href="#">{{loginName}}</a>
+                  </li>
                   <li ng-show='loginName' ng-click="logout()">
                     <a ng-href="#">退出</a>
                   </li>
@@ -93,9 +98,14 @@
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+        <script src="bower_components/bootstrap-wysihtml5/lib/js/prettify.js"></script>
+        <script src="bower_components/bootstrap-wysihtml5/lib/js/wysihtml5-0.3.0.js"></script>
+        <script src="bower_components/bootstrap-wysihtml5/src/bootstrap-wysihtml5.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/services/article.js"></script>
+        <script src="scripts/services/user.js"></script>
         <script src="scripts/services/enum.js"></script>
+        <script src="scripts/services/locale.js"></script>
         <script src="scripts/controllers/layout.js"></script>
         <script src="scripts/controllers/register.js"></script>
         <script src="scripts/controllers/login.js"></script>
