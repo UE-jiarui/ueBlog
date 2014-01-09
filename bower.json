@@ -12,8 +12,9 @@
     "less": "~1.6.0",
     "font-awesome": "~4.0.3",
     "angular-translate": "~1.1.1",
-    "wysihtml5": "~0.3.0",
-    "bootstrap-wysihtml5": "*"
+    "pagedown": "https://github.com/ujifgc/pagedown.git",
+    "pagedown-bootstrap": "https://github.com/samwillis/pagedown-bootstrap.git",
+    "bootstrap": "~3.0.3"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",
