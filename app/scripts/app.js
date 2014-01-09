@@ -36,4 +36,6 @@ blogApp.config(['$routeProvider', '$locationProvider',function ($routeProvider, 
     .otherwise({
       redirectTo: '/'
     });
+
+    hljs.tabReplace = '    '; 
 }]);
