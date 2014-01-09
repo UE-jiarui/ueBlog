@@ -1,0 +1,13 @@
+{
+  "name": "pagedown-bootstrap",
+  "homepage": "https://github.com/samwillis/pagedown-bootstrap",
+  "_release": "e610161c04",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e610161c04cddf03a614991d2a8c7617c1c264ab"
+  },
+  "_source": "https://github.com/samwillis/pagedown-bootstrap.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/samwillis/pagedown-bootstrap.git"
+}
