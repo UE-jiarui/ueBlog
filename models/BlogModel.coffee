@@ -30,6 +30,7 @@ BlogSchema = new Schema(
   create_at:
     type: Date
     default: Date.now
+  tags: Array
   update_at:
     type: Date
     default: Date.now
@@ -39,4 +40,4 @@ BlogSchema = new Schema(
     type: Date
     default: Date.now
 )
-mongoose.model "Blog", BlogSchema
+exports.Blog = mongoose.model("Blog", BlogSchema)

@@ -1674,6 +1674,7 @@
             else {
                 ui.prompt('Insert Link', linkDialogText, linkDefaultText, linkEnteredCallback);
             }
+
             return true;
         }
     };

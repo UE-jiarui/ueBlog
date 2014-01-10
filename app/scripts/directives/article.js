@@ -74,15 +74,12 @@ BlogDirectives.directive('richTextEditor', function($location, $compile) {
             //     alert("Do you need help?");
             // }
 
-            var editor = new Markdown.Editor(converter, "-" + editorUniqueId, {
-                // handler: help
-            });
+            var editor = new Markdown.Editor(converter, "-" + editorUniqueId);
 
             editor.run();
 
             var $wmdInput = $("#wmd-input-" + editorUniqueId);
 
-            // $compile(iElement.contents())(scope);
             // local -> parent scope change (model)
             $wmdInput.on('change', function() {
                 console.log('wmdInput changed', $wmdInput.val());
@@ -92,7 +89,6 @@ BlogDirectives.directive('richTextEditor', function($location, $compile) {
                 });
             });
 
-            // parent scope -> local change
             scope.$watch(iAttrs.ngModel, function(value, oldValue) {
                 
                 console.log('ngModel changed', 'old: ', oldValue, 'new: ', value, editor, $wmdInput);
@@ -100,14 +96,8 @@ BlogDirectives.directive('richTextEditor', function($location, $compile) {
                 // scope.textareaValue = value;
                 // if (value !== undefined) {
                 if(value){
-                    /*scope.$apply(function(){
-                        textareaValue = value;
-                        editor.refreshPreview();
-                    })*/
                     $wmdInput.val(value);
-                    //console.log($wmdInput.html());
                     editor.refreshPreview(); // forces the editor to re-render the preview according to the contents of the input, e.g. after you have programmatically changed the input box content. This method is only available after editor.run() has been called.
-                    // 代码高亮支持
                 }
 
             });

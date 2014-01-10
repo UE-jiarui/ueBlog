@@ -10,6 +10,7 @@ module.exports = {
         success: "数据库连接成功"
     },
     MAIN: {
+        noSession: "Session过期，请先登录",
         error: "服务器内部错误，请稍后重试",
         success: "操作成功"
     },
@@ -18,6 +19,6 @@ module.exports = {
         userNameExist: '用户名已存在',
         userEmailNone: 'Email不存在',
         userEmailExist: 'Email已存在',
-        userWrongPwd: '密码错误',
+        userWrongPwd: '密码错误'
     }
 };

@@ -13,7 +13,7 @@ exports.create = (req, res) ->
     return res.json err: err  if err
     return res.json err: msg.USER.userNameExist  if user
     newUser.save (err, curUser) ->
-      returnres.json err: err  if err
+      return res.json err: err  if err
       req.session["user"] = curUser
       res.json success: msg.MAIN.success
 
@@ -37,7 +37,7 @@ exports.login = (req, res) ->
     , (err, user) ->
       return res.json err: err  if err
       unless user
-        return res.json err: msg.USER.userNameExist
+        return res.json err: msg.USER.userNameNone
       return res.json err: msg.USER.userWrongPwd  unless user.authenticate(loginUser.password)
       req.session["user"] = user
       res.json user
