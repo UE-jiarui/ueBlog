@@ -2,16 +2,18 @@ html, body{
     height:100%;
     font-family: proxima-nova,sans-serif;
 }
+@footerHeight: 60px;
 #wrap{
     min-height: 100%;
     height: auto;
-    margin-bottom: -60px;
+    margin-bottom: -@footerHeight;
 }
 .main{
     padding-top:50px;
+    // margin-bottom:60px;
 }
 .footer{
-    height:60px;
+    height: @footerHeight;
     border-top: 1px solid #e5e5e5;
     background: #f5f5f5;
 }
@@ -52,10 +54,16 @@ html, body{
 background-position: -456px -48px;
 }
 .icon-share-alt {
-background-position: -336px -96px;
+    background-position: -336px -96px;
 }
 
 .post_wrap{
     width:85%;
     margin:0 auto;
+}
+#wmd-help-button-0{
+    display:none;
+}
+textarea.wmd-input{
+    resize:none;
 }

@@ -64,7 +64,7 @@ BlogDirectives.directive('richTextEditor', function($location, $compile) {
 
             var editorUniqueId = nextId++;
 
-            var newElement = $compile('<div>' + '<div class="wmd-panel">' + '<div id="wmd-button-bar-' + editorUniqueId + '"></div>' + '<textarea class="wmd-input" id="wmd-input-' + editorUniqueId + '">' + '</textarea>' + '</div>' + '<div id="wmd-preview-' + editorUniqueId + '" class="wmd-panel wmd-preview"></div>' + '</div>')(scope);
+            var newElement = $compile('<div>' + '<div class="wmd-panel">' + '<div id="wmd-button-bar-' + editorUniqueId + '"></div>' + '<textarea class="wmd-input form-control" rows="30" id="wmd-input-' + editorUniqueId + '">' + '</textarea>' + '</div>' + '<div id="wmd-preview-' + editorUniqueId + '" class="wmd-panel wmd-preview"></div>' + '</div>')(scope);
 
             iElement.html(newElement);
 
@@ -94,6 +94,7 @@ BlogDirectives.directive('richTextEditor', function($location, $compile) {
 
             // parent scope -> local change
             scope.$watch(iAttrs.ngModel, function(value, oldValue) {
+                
                 console.log('ngModel changed', 'old: ', oldValue, 'new: ', value, editor, $wmdInput);
                 // this does not really work, so we do it manually - what is the correct way?
                 // scope.textareaValue = value;
@@ -103,14 +104,10 @@ BlogDirectives.directive('richTextEditor', function($location, $compile) {
                         textareaValue = value;
                         editor.refreshPreview();
                     })*/
-                    alert(value);
                     $wmdInput.val(value);
                     //console.log($wmdInput.html());
                     editor.refreshPreview(); // forces the editor to re-render the preview according to the contents of the input, e.g. after you have programmatically changed the input box content. This method is only available after editor.run() has been called.
                     // 代码高亮支持
-                    $('code').each(function(i, e) {
-                        hljs.highlightBlock(e, null, true)
-                    });
                 }
 
             });

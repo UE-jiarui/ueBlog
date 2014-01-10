@@ -13,7 +13,6 @@
     "font-awesome": "~4.0.3",
     "angular-translate": "~1.1.1",
     "pagedown": "https://github.com/ujifgc/pagedown.git",
-    "pagedown-bootstrap": "https://github.com/samwillis/pagedown-bootstrap.git",
     "bootstrap": "~3.0.3"
   },
   "devDependencies": {

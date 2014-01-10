@@ -14,7 +14,6 @@ BlogContrllers.controller('RegisterCtrl', ['$scope', '$http', '$location', funct
   };
 
 	$scope.regist = function(){
-		console.log($scope.user);
 		$http.post('/user/regist',$scope.user).success(function(data){
 			if(data.err){
 				return $scope.err = data.err;
