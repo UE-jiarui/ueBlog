@@ -17,7 +17,9 @@ ueBlog
 
 
 学习资料：
-1. 对于有jQuery背景的开发人员，如何Think in Angular？
+
+
+###. 对于有jQuery背景的开发人员，如何Think in Angular？
 
 
 原版：http://stackoverflow.com/questions/14994391/how-do-i-think-in-angularjs-if-i-have-a-jquery-background/15012542#15012542
@@ -28,7 +30,7 @@ ueBlog
 
 
 
-2. 分别在什么时候使用directive、controller和service？
+ ###. 分别在什么时候使用directive、controller和service？
 
 
 原版：http://kirkbushell.me/when-to-use-directives-controllers-or-services-in-angular/
@@ -39,7 +41,7 @@ ueBlog
 
 
 
-3. Angular服务factory和使用场景
+###. Angular服务factory和使用场景
 
 
 很多好的回答：http://stackoverflow.com/questions/15666048/angular-js-service-vs-provider-vs-factory
@@ -53,7 +55,7 @@ ueBlog
 
 
 
-4. 针对 Node.js 初学者的入门资源汇总
+###. 针对 Node.js 初学者的入门资源汇总
 
 
 http://www.open-open.com/lib/view/open1333978119327.html
@@ -61,7 +63,7 @@ http://www.open-open.com/lib/view/open1333978119327.html
 
 
 
-5. Windows下环境和工作安装配置
+###. Windows下环境和工作安装配置
 
 
 nodejs：http://nodejs.org/download/
@@ -77,10 +79,10 @@ yeoman（可选）:http://blog.miniasp.com/post/2013/08/11/Yeoman-1-0-Installati
 
 
 
-其中1、2必读，有了基本了解之后，就可以边实践边学习。ueblog绝对是最佳实践平台！
+###其中1、2必读，有了基本了解之后，就可以边实践边学习。ueblog绝对是最佳实践平台！
 
 
-学习过程有问题第一时间查看api(http://docs.angularjs.org/api)，或者联系华续(xuhua@iflytek.com)，再解决不了请联系李正飞(zfli@iflytek.com)，再再解决不了请自行so提问(http://stackoverflow.com)，解决方法请抄送华续(xuhua@iflytek.com)一份，谢谢！
+学习过程有问题第一时间查看api(http://docs.angularjs.org/api )，或者联系华续(xuhua@iflytek.com )，再解决不了请联系李正飞(zfli@iflytek.com )，再再解决不了请自行so提问(http://stackoverflow.com )，解决方法请抄送华续(xuhua@iflytek.com )一份，谢谢！
 
 
-注：Angular的中文资料比较少，务必Google instead of Baidu！
+###注：Angular的中文资料比较少，务必Google instead of Baidu！
