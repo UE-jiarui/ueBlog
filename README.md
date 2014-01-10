@@ -30,7 +30,7 @@ ueBlog
 
 
 
- ###. 分别在什么时候使用directive、controller和service？
+###. 分别在什么时候使用directive、controller和service？
 
 
 原版：http://kirkbushell.me/when-to-use-directives-controllers-or-services-in-angular/
