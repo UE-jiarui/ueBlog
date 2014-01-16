@@ -10,7 +10,7 @@ Blog Schema
 BlogSchema = new Schema(
   title: String
   categary: String
-  content: String
+  url: String
   author_id: Schema.ObjectId
   top:
     type: Boolean

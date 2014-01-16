@@ -20,5 +20,10 @@ module.exports = {
         userEmailNone: 'Email不存在',
         userEmailExist: 'Email已存在',
         userWrongPwd: '密码错误'
-    }
+    },
+    ARTICLE: {
+        articleDict: 'E:\\BlogArticle',
+        writeFileError: '文件写入失败',
+        writeFileSuccess: '文件写入成功'
+    }　
 };
