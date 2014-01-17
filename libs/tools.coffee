@@ -13,10 +13,10 @@ checkEmail = (str) ->
 	emailReg.test str
 
 # 创建文件夹
-mkdirArticleSync = (url, mode = 0755, callback) ->
+mkdirArticleSync = (url, callback) ->
 	articleDict = msg.ARTICLE.articleDict
-	if not path.existsSync(articleDict)
-		fs.mkdir(articleDict, (err)->
+	if not fs.existsSync(articleDict)
+		fs.mkdir(articleDict, 777, (err)->
 			console.log('出错了') if err
 			)
 

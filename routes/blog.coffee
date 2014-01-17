@@ -6,9 +6,7 @@ msg = require("./../libs/msg")
 tools = require("./../libs/tools")
 fs = require('fs')
 path = require('path')
-
-# exports.create = (req, res) ->
-# 	BlogDao.create(req.body, function(err, ))
+marked = require('marked')
 
 # 新建博客
 exports.create = (req, res) ->
@@ -19,23 +17,23 @@ exports.create = (req, res) ->
 	console.log(req.body.author_id)
 	# 此处写Markdown文件，放在以用户id为名的文件夹中
 
-	url = msg.ARTICLE.articleDict + '\\' + req.body.author_id;
+	myFolderUrl = msg.ARTICLE.articleDict + '\\' + req.body.author_id;
+	myFileUrl = myFolderUrl + "\\" + req.body.title + ".md"
+	# 创建存放所有博客的根目录，部署后可去除
+	tools.mkdirArticleSync()
 
-	if not path.existsSync(url)
-		fs.mkdir(url + "\\" + req.body.title + ".md")
+	# 如果该用户是第一次写博客，为他创建文件夹
+	if not fs.existsSync(myFolderUrl)
+		fs.mkdirSync myFolderUrl
 
-
-	fs.writeFile(url, req.body.content, (err) ->
-		return res.json msg.ARTICLE.writeFileError if err
-	 )
-	req.body.url = url;
-
-	# fs.mkdirSync('./BlogFile/' + req.body.author_id + req.body.title + '.md', function(){
-
-	# 	})
-
-	newArticle = new Blog(req.body)
-
-	newArticle.save (err, curArticle) ->
-		return res.json err: err if err
-		res.json curArticle
+	# 将博客内容写入文件
+	fs.writeFile myFileUrl, req.body.content, (err) ->
+		return res.json err: msg.ARTICLE.writeFileError if err
+		req.body.url = myFileUrl
+		newArticle = new Blog(req.body)
+		# 存数据库
+		newArticle.save (err, curArticle) ->
+			return res.json err: err if err
+			res.json curArticle
+	
+exports.findAll =  (req, res) ->
