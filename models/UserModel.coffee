@@ -36,7 +36,6 @@ Virtual
 @return {} [description]
 ###
 UserSchema.virtual("password").set((password) ->
-  console.log 12345678
   @_password = password
   @hashed_password = @encryptPassword(password)
 ).get ->

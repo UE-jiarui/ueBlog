@@ -40,4 +40,10 @@ BlogSchema = new Schema(
     type: Date
     default: Date.now
 )
+
+# BlogSchema.virtual("articleContent").set((content) ->
+#   @articleContent = password
+# ).get ->
+#   @articleContent
+
 exports.Blog = mongoose.model("Blog", BlogSchema)

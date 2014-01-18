@@ -10,11 +10,8 @@ marked = require('marked')
 
 # 新建博客
 exports.create = (req, res) ->
-	console.log(req.session["user"])
 	return res.json err: msg.MAIN.noSession unless req.session["user"]
 	req.body.author_id = req.session["user"]._id
-	console.log(req.body)
-	console.log(req.body.author_id)
 	# 此处写Markdown文件，放在以用户id为名的文件夹中
 
 	myFolderUrl = msg.ARTICLE.articleDict + '\\' + req.body.author_id;
@@ -34,6 +31,10 @@ exports.create = (req, res) ->
 		# 存数据库
 		newArticle.save (err, curArticle) ->
 			return res.json err: err if err
-			res.json curArticle
-	
-exports.findAll =  (req, res) ->
+			res.json article: curArticle
+
+# 获取所有Blogs
+exports.getAll =  (req, res) ->
+	pageNum = req.body.pageNum
+	BlogDao.getAll pageNum, (err, blogs) ->
+		res.json articles: blogs

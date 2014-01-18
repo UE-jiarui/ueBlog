@@ -9,7 +9,7 @@ module.exports = (app) ->
   app.get '/user/logout', user.logout
   app.get '/user/getLoginUser', user.getLoginUser
   app.post '/article/save', blog.create
-  app.post '/article/getAllArticle', blog.findAll
+  app.post '/article/getAllArticle', blog.getAll
   # 为了使浏览器的上一步、下一步可用，并隐藏丑陋的地址栏上的 “#”
   # 共设置两处：
   # 	1.服务端路由中，添加下面路由代码；

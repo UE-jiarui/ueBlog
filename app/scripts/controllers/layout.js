@@ -5,7 +5,7 @@
  * @date 2013.12.21
  * @author xuhua
  */
-BlogContrllers.controller('LayoutCtrl',['$scope', '$http','$location', function($scope, $http, $location){
+BlogContrllers.controller('LayoutCtrl',['$scope', '$rootScope', '$http','$location', function($scope, $rootScope, $http, $location){
 	$scope.loginName = false;
 	// 获取登录session信息
 	$scope.checkLogin = function(){
