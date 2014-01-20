@@ -4,6 +4,7 @@ BlogDao = require("./../dao/BlogDao")
 log = require("./../libs/log")
 msg = require("./../libs/msg")
 tools = require("./../libs/tools")
+config = require("./../config")
 fs = require('fs')
 path = require('path')
 marked = require('marked')
@@ -14,8 +15,13 @@ exports.create = (req, res) ->
 	req.body.author_id = req.session["user"]._id
 	# 此处写Markdown文件，放在以用户id为名的文件夹中
 
-	myFolderUrl = msg.ARTICLE.articleDict + '\\' + req.body.author_id;
-	myFileUrl = myFolderUrl + "\\" + req.body.title + ".md"
+	# For Windows
+	# myFolderUrl = config.site.MARKDOWN_DICT + '\\' + req.body.author_id;
+	# myFileUrl = myFolderUrl + "\\" + req.body.title + ".md"
+
+	# For Mac
+	myFolderUrl = config.site.MARKDOWN_DICT + '\/' + req.body.author_id;
+	myFileUrl = myFolderUrl + "\/" + req.body.title + ".md"
 	# 创建存放所有博客的根目录，部署后可去除
 	tools.mkdirArticleSync()
 

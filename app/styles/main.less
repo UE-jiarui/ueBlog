@@ -52,6 +52,16 @@ header, footer{
 .header-form{
     position: absolute;
     right:200px;
+    opacity:1;
+    -webkit-transition:0.5s linear all;
+    transition:0.5s linear all;
+    opacity:1;
+}
+.header-form.ng-hide {
+  opacity:0;
+}
+.header-form.ng-hide-add, .header-form.ng-hide-remove {
+  display:block!important;
 }
 .form-input{
     background:none;
@@ -66,10 +76,6 @@ header, footer{
     -ms-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-}
-.form-input.ng-show, .form-input.ng-hide {
-  -webkit-transition:0.5s linear all;
-  transition:0.5s linear all;
 }
 .page_content{
     padding-top: 20px;

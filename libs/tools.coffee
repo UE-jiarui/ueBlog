@@ -15,7 +15,7 @@ checkEmail = (str) ->
 
 # 创建文件夹
 mkdirArticleSync = (url, callback) ->
-	articleDict = msg.ARTICLE.articleDict
+	articleDict = config.site.MARKDOWN_DICT
 	if not fs.existsSync(articleDict)
 		fs.mkdir(articleDict, 777, (err)->
 			console.log('出错了') if err
