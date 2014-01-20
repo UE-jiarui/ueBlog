@@ -13,7 +13,7 @@ var BlogDirectives = angular.module('ueBlogApp.directives', []);
 var BlogFilters = angular.module('ueBlogApp.filters', []);
 
 //@xuhua:尽量不要直接在Module中引入依赖，在分模块中分别引入子依赖
-var blogApp = angular.module('ueBlogApp', ['ui.bootstrap', 'ueBlogApp.controllers', 'ueBlogApp.services', 'ueBlogApp.directives' , 'ueBlogApp.filters', 'ngResource'])
+var blogApp = angular.module('ueBlogApp', ['ngRoute', 'ui.bootstrap','ngSanitize','ngAnimate' , 'ueBlogApp.controllers', 'ueBlogApp.services', 'ueBlogApp.directives' , 'ueBlogApp.filters', 'ngResource'])
 blogApp.config(['$routeProvider', '$locationProvider',function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
   $routeProvider
@@ -37,5 +37,6 @@ blogApp.config(['$routeProvider', '$locationProvider',function ($routeProvider, 
       redirectTo: '/'
     });
 
+    // highlight代码缩进配置
     hljs.tabReplace = '    '; 
 }]);

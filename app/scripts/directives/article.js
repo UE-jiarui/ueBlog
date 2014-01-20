@@ -35,10 +35,17 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
         }
     }
 }])
-.directive("articleItem",['$compile', function($compile){
-    replace: true,
-    restrict: 'A',
-    template: '<div class="article_item_body"></div>'
+.directive("articleList",['$compile', function($compile){
+    return { 
+        restrict: 'AE',
+        transclude: true,
+        replace: true,
+        scope: { articles:'=' },
+        templateUrl: '/scripts/directives/articleList.html',
+        link: function(scope, iElement, iAttrs){
+            scope.$watch()
+        }
+    }
 }])
 
 

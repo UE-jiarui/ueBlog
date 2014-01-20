@@ -11,7 +11,9 @@ BlogSchema = new Schema(
   title: String
   categary: String
   url: String
-  author_id: Schema.ObjectId
+  author_id: 
+    type: Schema.Types.ObjectId
+    ref: "User"
   top:
     type: Boolean
     default: false

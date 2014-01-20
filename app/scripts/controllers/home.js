@@ -11,4 +11,5 @@ BlogContrllers.controller('IndexCtrl',['$scope', '$http',function($scope, $http)
 	$http.post('/article/getAllArticle', {pageNum:1}).success(function(data){
 		$scope.articles = data.articles;
 	});
+
 }]);

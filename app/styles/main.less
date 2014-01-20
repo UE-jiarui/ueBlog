@@ -1,24 +1,93 @@
 html, body{
-    height:100%;
-    font-family: proxima-nova,sans-serif;
+    font: 500 14px/1.8 'Optima', 'Verdana', 'Microsoft Yahei', sans-serif;
+    letter-spacing: 0.07em;
+}
+*{
+    outline:none;
 }
 @footerHeight: 60px;
-#wrap{
-    min-height: 100%;
-    height: auto;
-    margin-bottom: -@footerHeight;
+@deeper_background:#556270;
+@lighter_background: #c8c9c7;
+body{
+    background:@lighter_background;
+}
+.wrap{
+    margin: 60px auto 120px;
+    width: 1120px;
+    padding: 0 80px;
+    background: #fff;
+    transition:0.3s;
+}
+.container{
+    width: 960px;
 }
 .main{
     padding-top:50px;
     // margin-bottom:60px;
 }
-.footer{
-    height: @footerHeight;
-    border-top: 1px solid #e5e5e5;
-    background: #f5f5f5;
+header, footer{
+    position: relative;
+    left: -80px;
+    width:1120px;
+    margin:0 auto;
+    padding: 40px 80px 70px;
+    background: @deeper_background;
+    a{
+        color: #e5e5e5;
+        &:hover{ color: #fff }
+    }
+}
+@media all and (max-width: 1120px){
+    .wrap {
+        padding: 0;
+        margin: 0 auto;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    header, footer{
+        width: 100%;
+        left:0;
+    }
+}
+.header-form{
+    position: absolute;
+    right:200px;
+}
+.form-input{
+    background:none;
+    margin: 0px 0 20px 0;
+    width: 176px;
+    padding: 9px 12px;
+    border: 1px solid #d8d8d8;
+    color:#fff;
+    font: 12px Helvetica, Arial, Tahoma, sans-serif;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.form-input.ng-show, .form-input.ng-hide {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
 }
 .page_content{
     padding-top: 20px;
+}
+h1{
+    color: #363636;
+    // font-family: "Roboto Consdensed", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: 0em;
+    line-height: 42px;
+}
+a{
+    transition: all 0.1s ease 0.1s;
+}
+a:hover{
+    text-decoration: none;
 }
 .navbar-inverse .navbar-brand{
     color:#fff;
@@ -51,12 +120,11 @@ html, body{
     background-position: 0 0;
 }
 .icon-picture {
-background-position: -456px -48px;
+    background-position: -456px -48px;
 }
 .icon-share-alt {
     background-position: -336px -96px;
 }
-
 .post_wrap{
     width:85%;
     margin:0 auto;

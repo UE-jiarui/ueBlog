@@ -22,11 +22,12 @@
 
         <!-- build:css({.tmp,app}) styles/main.css -->
         <link rel="stylesheet" href="styles/bootstrap.css">
-        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
         <!-- <link rel="stylesheet" href="styles/pure.css"> -->
         <link rel="stylesheet" type="text/css" href="custome_lib/highlight/styles/monokai_sublime.css">
         <link rel="stylesheet/less" style="text/css" href="styles/main.less">
+        <link rel="stylesheet/less" style="text/css" href="styles/base.less">
         <link rel="stylesheet/less" href="custome_lib/pagedown-bootstrap/Markdown.Editor.less">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
         <!-- endbuild -->
 </head>
 <body>
@@ -44,8 +45,36 @@
         <script src="bower_components/es5-shim/es5-shim.js"></script>
         <script src="bower_components/json3/lib/json3.min.js"></script>
         <![endif]-->
-        <div id="wrap">
-          <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="wrap">
+          <header>
+            <div class="container">
+              <div class="left_half left">
+                <h1 class="logo"><a href="/">UEBLOG</a></h1>
+                <nav></nav>
+              </div>
+              <div class="right_half right">
+                <form class="header-form animate-show" id="login_form" name="login_form" novalidate ng-submit="login()" ng-show="loginShow">
+                  <div class="form_item">
+                    <input type="text" class="form-input" name="username" ng-model="loginUser.username" placeholder="Username/Email" required />
+                  </div>
+                  <div class="form_item">
+                    <input type="password" class="form-input" name="password" ng-model="loginUser.password" placeholder="Password" required />
+                  </div>
+                </form>
+                <div class="operate-area right">
+                  <a id="login_link" class="i_b pr20" href="#" ng-hide="loginName" ng-click="loginShow = !loginShow">
+                    <i class="fa fa-user"></i>
+                  </a>
+                  <a id="search_link" class="i_b pr20" href="#">
+                    <i class="fa fa-search"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </header>
+          <!-- End of header. -->
+          <!-- <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
               <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -77,14 +106,15 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- Add your site or application content here -->
           <div class="main" ng-view=""></div>
+          <footer></footer>
         </div>
-        <footer class="footer">
+        <!-- <footer class="footer">
           <p>© Team 2014</p>
-        </footer>
+        </footer> -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -99,6 +129,9 @@
         <script src="bower_components/bootstrap/js/modal.js"></script>
         <script src="bower_components/bootstrap/js/tooltip.js"></script>
         <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
