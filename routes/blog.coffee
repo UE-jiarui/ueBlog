@@ -16,12 +16,12 @@ exports.create = (req, res) ->
 	# 此处写Markdown文件，放在以用户id为名的文件夹中
 
 	# For Windows
-	# myFolderUrl = config.site.MARKDOWN_DICT + '\\' + req.body.author_id;
-	# myFileUrl = myFolderUrl + "\\" + req.body.title + ".md"
+	myFolderUrl = config.site.MARKDOWN_DICT + '\\' + req.body.author_id;
+	myFileUrl = myFolderUrl + "\\" + req.body.title + ".md"
 
 	# For Mac
-	myFolderUrl = config.site.MARKDOWN_DICT + '\/' + req.body.author_id;
-	myFileUrl = myFolderUrl + "\/" + req.body.title + ".md"
+	# myFolderUrl = config.site.MARKDOWN_DICT + '\/' + req.body.author_id;
+	# myFileUrl = myFolderUrl + "\/" + req.body.title + ".md"
 	# 创建存放所有博客的根目录，部署后可去除
 	tools.mkdirArticleSync()
 

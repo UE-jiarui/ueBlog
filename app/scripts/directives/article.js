@@ -8,7 +8,7 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
         template: '<div class="pagedown-bootstrap-editor"></div>',
         link: function(scope, iElement, iAttrs, ngModel) {
             var editorUniqueId = nextId++;
-            var newElement = $compile('<div>' + '<div class="wmd-panel">' + '<div id="wmd-button-bar-' + editorUniqueId + '"></div>' + '<textarea class="wmd-input form-control" rows="30" id="wmd-input-' + editorUniqueId + '">' + '</textarea>' + '</div>' + '<div id="wmd-preview-' + editorUniqueId + '" class="wmd-panel wmd-preview"></div>' + '</div>')(scope);
+            var newElement = $compile('<div>' + '<div class="wmd-panel">' + '<div id="wmd-button-bar-' + editorUniqueId + '"></div>' + '<textarea class="wmd-input form-control" rows="30" id="wmd-input-' + editorUniqueId + '" ng-model="article.content">' + '</textarea>' + '</div>' + '<div id="wmd-preview-' + editorUniqueId + '" class="wmd-panel wmd-preview"></div>' + '</div>')(scope);
             iElement.html(newElement);
             // 初始化
             var converter = new Markdown.Converter();
@@ -26,6 +26,7 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
             });
 
             scope.$watch(iAttrs.ngModel, function(value, oldValue) {
+                console.log('ngModel changed', 'old: ', oldValue, 'new: ', value, editor, $wmdInput);
                 if(value){
                     $wmdInput.val(value);
                     editor.refreshPreview(); // forces the editor to re-render the preview according to the contents of the input, e.g. after you have programmatically changed the input box content. This method is only available after editor.run() has been called.
@@ -42,8 +43,21 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
         replace: true,
         scope: { articles:'=' },
         templateUrl: '/scripts/directives/articleList.html',
+        // compile: function(tElement, tAttrs){
+        //     return {
+        //         // pre: function preLink(scope, iElement, iAttrs){
+        //         //     alert(iElement);
+        //         // },
+        //         post: function postLink(scope, iElement, iAttrs){
+        //             console.log(iElement.find(".article_content"));
+        //         }
+        //     }
+        // },
         link: function(scope, iElement, iAttrs){
-            scope.$watch()
+            // myElement = $compile(iElement.contents)(scope);
+            // $(iElement).find(".article_content").remove();
+            console.log($(iElement).find(".article_list"))
+            // console.log(angular.element(".article_content"));
         }
     }
 }])

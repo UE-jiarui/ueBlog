@@ -50,7 +50,18 @@
             <div class="container">
               <div class="left_half left">
                 <h1 class="logo"><a href="/">UEBLOG</a></h1>
-                <nav></nav>
+                <nav>
+                  <div class="menu-container">
+                    <ul class="menu">
+                      <li class="menu-item">
+                        <a href="/archive">Archive</a>
+                      </li>
+                      <li class="menu-item">
+                        <a href="/post">Post Article</a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
               </div>
               <div class="right_half right">
                 <form class="header-form" id="login_form" name="login_form" novalidate ng-submit="login()" ng-show="loginShow">
@@ -63,12 +74,12 @@
                 </form>
                 <div class="operate-area right">
                   <a class="login-user i_b pr20" href="#">{{loginName}}</a>
-                  <a id="login_link" class="i_b pr20" href="#" ng-hide="loginName" ng-click="switchLoginShow()">
+                  <a id="login_link" class="i_b pr20" href="#" ng-hide="loginName" ng-click="switchLoginShow()" title="Login">
                     <i class="fa fa-user"></i>
                   </a>
-                  <a id="search_link" class="i_b pr20" href="#">
+<!--                   <a id="search_link" class="i_b pr20" href="#">
                     <i class="fa fa-search"></i>
-                  </a>
+                  </a> -->
                   <a id="logout_link" class="i_b pr20" href="#" ng-click="logout()" ng-show="loginName">
                     <i class="fa fa-times"></i>
                   </a>

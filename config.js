@@ -9,7 +9,7 @@ module.exports = {
 		SITE_NAME: "",
 		SITE_URL: "",
 		PAGE_COUNT: 10,
-		MARKDOWN_DICT: "./BlogArticle"
+		MARKDOWN_DICT: "./../BlogArticle"
 	},
 	db : {
 		COOKIE_SECRET: "ueblog",

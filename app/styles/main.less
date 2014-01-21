@@ -37,6 +37,16 @@ header, footer{
         &:hover{ color: #fff }
     }
 }
+nav{
+    margin: 13px 0 23px;
+    position: relative;
+}
+nav li{
+    margin: 0 20px 0 0;
+    display: inline-block;
+    *display: inline;
+    *zoom:1;
+}
 @media all and (max-width: 1120px){
     .wrap {
         padding: 0;
@@ -47,6 +57,28 @@ header, footer{
     header, footer{
         width: 100%;
         left:0;
+    }
+}
+@media all and (max-width: 767px) and (min-width: 480px){
+    header{
+        padding-top:30px;
+        padding-bottom: 10px;
+    }
+    .container{
+        width: 440px;
+    }
+}
+@media all and (max-width: 767px){
+    header, footer{
+        padding-left: 0;
+        padding-right: 0;
+        left: 0;
+    }
+}
+@media all and (max-width: 479px){
+    .container{
+        padding: 0;
+        width: 280px;
     }
 }
 .header-form{
@@ -77,24 +109,35 @@ header, footer{
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
+
+.article_title_link{
+    background:#fff;
+    padding: 0 50px;
+    display:inline-block;
+    font-size:32px;
+    &:hover{
+        color: #333;
+    }
+}
+.head-line{
+    width:100%;
+    text-align: center;
+    background: url(../images/bg-headline.png) 0 50% repeat-x;
+}
+.article_content{
+    margin-bottom: 50px;
+    padding:0 48px;
+}
+
+
+
+
+
 .page_content{
     padding-top: 20px;
 }
-h1{
-    color: #363636;
-    // font-family: "Roboto Consdensed", sans-serif;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 36px;
-    letter-spacing: 0em;
-    line-height: 42px;
-}
-a{
-    transition: all 0.1s ease 0.1s;
-}
-a:hover{
-    text-decoration: none;
-}
+
+
 .navbar-inverse .navbar-brand{
     color:#fff;
     font-family: zeroes;
