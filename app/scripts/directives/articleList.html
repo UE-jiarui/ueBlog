@@ -1,19 +1,21 @@
-<div class="article_list">
-	<div class="article_item" ng-repeat="article in articles">
-		<div class="article_item_body">
+<article class="article_item container" ng-repeat="article in articles">
+	<div class="article_item_body">
+		<div class="aligncenter">
 			<div class="head-line">
 				<h2>
-					<a class="article_title_link" ng-href="/article/{{article._id}}">{{article.title}}</a>
+					<a class="article_title_link" ng-href="/article?articleId={{article._id}}">{{article.title}}</a>
 				</h2>
 			</div>
-			<p article-content content="article.articleContent"></p>
-			<div class="article_details">
-				<ul>
-					<li class="i_b pr20"><i class="fa fa-clock-o">{{article.create_at | date: 'yyyy年MM月dd日'}}</i></li>
-					<li class="i_b pr20"><i class="fa fa-star">0 Stars</i></li>
-				</ul>
-				<!-- <p class="article_createTime"></p> -->
-			</div>
+		</div>
+		<p article-content content="article.articleContent" articleCount="articleCount"></p>
+		<div class="article_details">
+			<div class="dividing-line"></div>
+			<ul>
+				<li class="i_b pr20"><i class="fa fa-clock-o">&nbsp;{{article.create_at | date: 'MMMM dd, yyyy'}}</i></li>
+				<li class="i_b pr20">
+				<a class="star_link" href="#"><i class="fa fa-star-o">&nbsp;0 Stars</i></a></li>
+			</ul>
+			<!-- <p class="article_createTime"></p> -->
 		</div>
 	</div>
-</div>
+</article>

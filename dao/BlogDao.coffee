@@ -10,7 +10,6 @@ BlogDao =
 	# 参数：页码，回调函数
 	getAll: (page, callback) ->
 		start = tools.calcStart(page)
-		bufferHelper = new tools.BufferHelper()
 		# 查询语句步骤分别是：查询所有博客，跳过前页的条目，限制一页数，查询博客作者
 		@model.find().skip(start).limit(config.site.PAGE_COUNT).populate('author_id').exec (err, arts)->
 			return callback err, null if err
@@ -21,5 +20,12 @@ BlogDao =
 				fs.readFile art.url,{encoding:'utf-8'}, (err, data) ->
 					artsObj[i].articleContent = marked(data)
 					callback null, artsObj if ++i == arts.length
-
+	
+	# 获取一条博客记录
+	getOneById: (id, callback) ->
+		BlogModel.findById id, (err, article) ->
+			artObj = JSON.parse(JSON.stringify(article))
+			fs.readFile artObj.url,{encoding:'utf-8'}, (err, data) ->
+					artObj.articleContent = marked(data)
+					callback null, artObj
 module.exports = BlogDao;

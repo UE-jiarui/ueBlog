@@ -12,7 +12,6 @@ UserDao =
 	  user = new UserModel(user)
 	  user.save (err, data) ->
 	    console.log "error in save user"  if err
-	    console.log "123:" + data
 	    callback data
 
 module.exports = UserDao

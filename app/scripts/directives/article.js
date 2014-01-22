@@ -36,10 +36,10 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
         }
     }
 }])
-.directive("articleList",['$compile', function($compile){
+.directive("articleList",['$compile','$interval', function($compile, $interval){
     return { 
         restrict: 'AE',
-        transclude: true,
+        // transclude: true,
         replace: true,
         scope: { articles:'=' },
         templateUrl: '/scripts/directives/articleList.html',
@@ -50,15 +50,16 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
 .directive("articleContent", ["$compile", function($compile){
     return {
         restrict: 'A',
-        transclude: true,
+        // transclude: true,
         replace: true,
-        scope: { content:'=' },
+        scope: { content:'='},
         template: '<p class="article_content"></p>',
         link: function(scope, iElement, iAttrs){
             // 取前10个元素进行预览
             var content = $compile(scope.content)(scope),
                 myArticle = iElement;
-            for(var i = 0; i < 10; i++){
+            
+            for(var i = 0; i < 5; i++){
                 myArticle.append(content.eq(i));
             }
             iElement.append(myArticle);

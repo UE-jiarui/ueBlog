@@ -1,3 +1,3 @@
-BlogServices.factory('articleResource', ['$resource', function($resource){
+BlogServices.factory('articleForCommon', ['$resource', function($resource){
 	return $resource('/article/:id', {id: '@id'});
 }]);

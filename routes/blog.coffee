@@ -44,3 +44,7 @@ exports.getAll =  (req, res) ->
 	pageNum = req.body.pageNum
 	BlogDao.getAll pageNum, (err, blogs) ->
 		res.json articles: blogs
+
+exports.getOneById = (req, res) ->
+	BlogDao.getOneById req.params.id, (err, blog) ->
+		res.json article: blog

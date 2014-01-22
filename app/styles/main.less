@@ -1,5 +1,5 @@
 html, body{
-    font: 500 14px/1.8 'Optima', 'Verdana', 'Microsoft Yahei', sans-serif;
+    
     letter-spacing: 0.07em;
 }
 *{
@@ -9,7 +9,14 @@ html, body{
 @deeper_background:#556270;
 @lighter_background: #c8c9c7;
 body{
+    color: #666;
+    font: 500 14px/1.8 'Optima', 'Verdana', 'Microsoft Yahei', sans-serif;
     background:@lighter_background;
+}
+.i_b{
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
 }
 .wrap{
     margin: 60px auto 120px;
@@ -18,19 +25,19 @@ body{
     background: #fff;
     transition:0.3s;
 }
+header .container{
+    padding: 0 70px;
+}
 .container{
     width: 960px;
 }
-.main{
-    padding-top:50px;
-    // margin-bottom:60px;
-}
+
 header, footer{
     position: relative;
     left: -80px;
     width:1120px;
     margin:0 auto;
-    padding: 40px 80px 70px;
+    padding: 40px 60px 70px;
     background: @deeper_background;
     a{
         color: #e5e5e5;
@@ -43,61 +50,26 @@ nav{
 }
 nav li{
     margin: 0 20px 0 0;
-    display: inline-block;
-    *display: inline;
-    *zoom:1;
+    .i_b;
 }
-@media all and (max-width: 1120px){
-    .wrap {
-        padding: 0;
-        margin: 0 auto;
-        width: 100%;
-        overflow-x: hidden;
-    }
-    header, footer{
-        width: 100%;
-        left:0;
-    }
-}
-@media all and (max-width: 767px) and (min-width: 480px){
-    header{
-        padding-top:30px;
-        padding-bottom: 10px;
-    }
-    .container{
-        width: 440px;
-    }
-}
-@media all and (max-width: 767px){
-    header, footer{
-        padding-left: 0;
-        padding-right: 0;
-        left: 0;
-    }
-}
-@media all and (max-width: 479px){
-    .container{
-        padding: 0;
-        width: 280px;
-    }
+
+article{
+    padding: 80px 0 0;
 }
 .header-form{
-    position: absolute;
-    right:200px;
+    .i_b;
     opacity:1;
     -webkit-transition:0.5s linear all;
     transition:0.5s linear all;
-    opacity:1;
 }
 .header-form.ng-hide {
   opacity:0;
 }
 .header-form.ng-hide-add, .header-form.ng-hide-remove {
-  display:block!important;
+  display:inline-block!important;
 }
 .form-input{
     background:none;
-    margin: 0px 0 20px 0;
     width: 176px;
     padding: 9px 12px;
     border: 1px solid #d8d8d8;
@@ -111,29 +83,47 @@ nav li{
 }
 
 .article_title_link{
-    background:#fff;
-    padding: 0 50px;
-    display:inline-block;
+    .i_b;
     font-size:32px;
     &:hover{
         color: #333;
     }
 }
 .head-line{
-    width:100%;
+    .i_b;
+    margin-bottom: 20px;
+    padding: 0 100px;
     text-align: center;
     background: url(../images/bg-headline.png) 0 50% repeat-x;
+    h2{
+        background:#fff;
+        padding: 0 25px;
+        margin-top:10px;
+        .i_b;
+    }
 }
 .article_content, .article_details{
+    padding: 0 68px;
     margin-bottom: 50px;
-    padding:0 48px;
+   
 }
 
-
-
-
-.page_content{
-    padding-top: 20px;
+.article_details, .article_details a{
+    color: #666;
+    font-size: 13px;
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+.article_details a:hover{
+    color: #333;
+}
+.dividing-line{
+    margin-bottom: 35px;
+    height: 1px;
+    width: 20%;
+    background: url(../images/bg-headline.png) repeat-x;
+}
+.right_half{
+    margin-top: 22px;
 }
 
 
@@ -182,4 +172,66 @@ nav li{
 }
 textarea.wmd-input{
     resize:none;
+}
+
+/*--MEDIA QUERIES--*/
+@media all and (max-width: 1120px){
+    .wrap { padding: 0; margin: 0 auto; width: 100%; overflow-x: hidden; }
+    header, footer{
+        width: 100%;
+        left:0;
+        padding-left: 0; 
+        padding-right: 0;
+    }
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 920px;
+    }
+    article{
+        padding-top: 50px;
+    }
+}
+@media all and (min-width: 960px){
+
+}
+@media all and (max-width: 959px){
+    article {
+        padding-top: 20px;
+    }
+}
+@media all and (max-width: 959px) and (min-width: 768px){
+    .container{
+        width:768px;
+        padding:40px 71px 0;
+        position: relative; 
+        margin: 0px auto;
+    }
+}
+@media all and (max-width: 767px){
+    .article_content, .article_details, header .container{
+        padding:0;
+    }
+}
+@media all and (max-width: 767px) and (min-width: 480px){
+    header{
+        padding-top:30px;
+        padding-bottom: 10px;
+    }
+    .container{
+        width: 440px;
+    }
+}
+@media all and (max-width: 767px){
+    header, footer{
+        padding-left: 0;
+        padding-right: 0;
+        left: 0;
+    }
+}
+@media all and (max-width: 479px){
+    .container{
+        padding: 0;
+        width: 280px;
+    }
 }
