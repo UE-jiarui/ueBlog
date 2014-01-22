@@ -8,7 +8,7 @@
 BlogContrllers.controller('IndexCtrl',['$scope', '$http',function($scope, $http){
 	$scope.$parent.checkLogin();
 	$scope.articles = {};
-	$http.post('/article/getAllArticle', {pageNum:1}).success(function(data){
+	$http.post('/article/getAllArticle', { pageNum: 1 }).success(function(data){
 		$scope.articles = data.articles;
 	});
 

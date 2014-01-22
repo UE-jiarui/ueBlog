@@ -15,13 +15,13 @@ exports.create = (req, res) ->
 	req.body.author_id = req.session["user"]._id
 	# 此处写Markdown文件，放在以用户id为名的文件夹中
 
-	# For Windows
-	myFolderUrl = config.site.MARKDOWN_DICT + '\\' + req.body.author_id;
-	myFileUrl = myFolderUrl + "\\" + req.body.title + ".md"
+	# # For Windows
+	# myFolderUrl = config.site.MARKDOWN_DICT + '\\' + req.body.author_id;
+	# myFileUrl = myFolderUrl + "\\" + req.body.title + ".md"
 
 	# For Mac
-	# myFolderUrl = config.site.MARKDOWN_DICT + '\/' + req.body.author_id;
-	# myFileUrl = myFolderUrl + "\/" + req.body.title + ".md"
+	myFolderUrl = config.site.MARKDOWN_DICT + '\/' + req.body.author_id;
+	myFileUrl = myFolderUrl + "\/" + req.body.title + ".md"
 	# 创建存放所有博客的根目录，部署后可去除
 	tools.mkdirArticleSync()
 
@@ -43,7 +43,10 @@ exports.create = (req, res) ->
 exports.getAll =  (req, res) ->
 	pageNum = req.body.pageNum
 	BlogDao.getAll pageNum, (err, blogs) ->
-		res.json articles: blogs
+		Blog.count {},(err, number) ->
+			res.json 
+				articles: blogs
+				pageCount: (number / config.site.PAGE_COUNT) + 1
 
 exports.getOneById = (req, res) ->
 	BlogDao.getOneById req.params.id, (err, blog) ->
