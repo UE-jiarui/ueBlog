@@ -8,7 +8,7 @@ module.exports = {
 	site : {
 		SITE_NAME: "",
 		SITE_URL: "",
-		PAGE_COUNT: 10,
+		PAGE_COUNT: 5,
 		MARKDOWN_DICT: "./../BlogArticle"
 	},
 	db : {

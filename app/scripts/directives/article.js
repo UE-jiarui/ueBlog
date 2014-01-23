@@ -8,7 +8,7 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
         template: '<div class="pagedown-bootstrap-editor"></div>',
         link: function(scope, iElement, iAttrs, ngModel) {
             var editorUniqueId = nextId++;
-            var newElement = $compile('<div>' + '<div class="wmd-panel">' + '<div id="wmd-button-bar-' + editorUniqueId + '"></div>' + '<textarea class="wmd-input form-control" rows="30" id="wmd-input-' + editorUniqueId + '" ng-model="article.content">' + '</textarea>' + '</div>' + '<div id="wmd-preview-' + editorUniqueId + '" class="wmd-panel wmd-preview"></div>' + '</div>')(scope);
+            var newElement = $compile('<div>' + '<div class="wmd-panel" ng-show="postArgs.isEdit">' + '<div id="wmd-button-bar-' + editorUniqueId + '"></div>' + '<textarea class="wmd-input form-control" rows="30" id="wmd-input-' + editorUniqueId + '" ng-model="article.content" placeholder="请输入文章内容">' + '</textarea>' + '</div>' + '<div id="wmd-preview-' + editorUniqueId + '" class="wmd-panel wmd-preview" ng-hide="postArgs.isEdit"></div>' + '</div>')(scope);
             iElement.html(newElement);
             // 初始化
             var converter = new Markdown.Converter();
@@ -36,21 +36,23 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
         }
     }
 }])
-.directive("articleList",['$compile','$interval', function($compile, $interval){
+.directive("articleList",['$compile','$interval', '$location', function($compile, $interval, $location){
     return { 
         restrict: 'AE',
-        // transclude: true,
         replace: true,
-        scope: { articles:'=' },
+        scope: { articles:'=' ,paginate:'=' },
         templateUrl: '/scripts/directives/articleList.html',
         link: function(scope, iElement, iAttrs){
+          // 翻页跳转
+          scope.pageChanged = function (pageNo) {
+            $location.path("/blog/page/" + pageNo);
+          };
         }
     }
 }])
 .directive("articleContent", ["$compile", function($compile){
     return {
         restrict: 'A',
-        // transclude: true,
         replace: true,
         scope: { content:'='},
         template: '<p class="article_content"></p>',

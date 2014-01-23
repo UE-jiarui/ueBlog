@@ -4,15 +4,21 @@
  * @date 2013.12.21
  * @author xuhua
  */
-BlogContrllers.controller('PostCtrl',['$scope', '$http', '$location', function($scope, $http, $location){
+BlogContrllers.controller('PostCtrl',['$scope', '$http', '$location','articleForCommon' , function($scope, $http, $location, articleForCommon){
 	$scope.article = {
 		title: "",
-		content: ""
-		// tags: []
+		content: "",
+		tags: ""
+	}
+	$scope.postArgs = {
+		isEdit: true
 	}
 	// 发表新博客
 	$scope.post = function(){
-		$http.post('/article/save',$scope.article).success(function(data){
+		// tags分隔成数组
+		$scope.article.tags = $scope.article.tags.split("/[,，;]/");
+		articleForCommon.save()
+		$http.post('/article',$scope.article).success(function(data){
 			if(data.err){
 				alert(data.err);
 			}

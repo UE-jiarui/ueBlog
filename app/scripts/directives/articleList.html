@@ -1,24 +1,27 @@
-<article class="article_item container" ng-repeat="article in articles">
-	<div class="article_item_body">
-		<div class="aligncenter">
-			<div class="head-line">
-				<h2>
-					<a class="article_title_link" ng-href="/article?articleId={{article._id}}">{{article.title}}</a>
-				</h2>
+<div>
+	<article class="article_item container" ng-repeat="article in articles">
+		<div class="article_item_body">
+			<div class="aligncenter">
+				<div class="head-line">
+					<h2>
+						<a class="article_title_link" ng-href="/blog/{{article._id}}">{{article.title}}</a>
+					</h2>
+				</div>
+			</div>
+			<p article-content content="article.articleContent" articleCount="articleCount"></p>
+			<div class="article_details">
+				<div class="dividing-line"></div>
+				<ul>
+					<li class="i_b"><i class="fa fa-clock-o">&nbsp;{{article.create_at | date: 'MMMM dd, yyyy'}}</i></li>
+					<li class="i_b pr20">&nbsp;By&nbsp;<a href="javascript:void(0)">{{article.author_id.username}}</a></li>
+					<li class="i_b pr20">
+					<a class="star_link" href="#"><i class="fa fa-star-o">&nbsp;0 Stars</i></a></li>
+				</ul>
+				<!-- <p class="article_createTime"></p> -->
 			</div>
 		</div>
-		<p article-content content="article.articleContent" articleCount="articleCount"></p>
-		<div class="article_details">
-			<div class="dividing-line"></div>
-			<ul>
-				<li class="i_b pr20"><i class="fa fa-clock-o">&nbsp;{{article.create_at | date: 'MMMM dd, yyyy'}}</i></li>
-				<li class="i_b pr20">
-				<a class="star_link" href="#"><i class="fa fa-star-o">&nbsp;0 Stars</i></a></li>
-			</ul>
-			<!-- <p class="article_createTime"></p> -->
-		</div>
-	</div>
-</article>
-<section class="container">
-	<pagination total-items="paginate.totalPages" page="paginate.currentPage"></pagination>
-</section>
+	</article>
+	<section class="container">
+		<pagination on-select-page="pageChanged(page)" total-items="paginate.totalPages" items-per-page="paginate.itemsPerPage" page="paginate.currentPage" previous-text="‹" next-text="›" max-size="5"></pagination>
+	</section>
+</div>

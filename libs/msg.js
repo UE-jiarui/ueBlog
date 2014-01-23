@@ -12,7 +12,8 @@ module.exports = {
     MAIN: {
         noSession: "Session过期，请先登录",
         error: "服务器内部错误，请稍后重试",
-        success: "操作成功"
+        success: "操作成功",
+        noneRight: "权限不足"
     },
     USER: {
         userNameNone: '用户名不存在',

@@ -6,11 +6,11 @@
  * @author xuhua
  */
 BlogContrllers.controller('LayoutCtrl',['$scope', '$rootScope', '$http','$location', function($scope, $rootScope, $http, $location){
-	$scope.loginName = false;
+	// $scope.loginName = false;
 	// 获取登录session信息
 	$scope.checkLogin = function(){
 		$http.get('/user/getLoginUser').success(function(data){
-			$scope.loginName = data.username;
+			$rootScope.loginName = data.username;
 		});
 	}
 	$scope.checkLogin();

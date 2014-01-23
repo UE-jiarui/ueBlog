@@ -61,7 +61,7 @@ exports.getLoginUser = (req, res) ->
   if req.cookies.loginUser
     userId = req.cookies.loginUser
     User.findById userId, (err, user) ->
-      console.log user
       req.session["user"] = user
-      return res.json req.session["user"] or {}
-  res.json {}    
+      return res.json user or {}
+  else
+    res.json {}    

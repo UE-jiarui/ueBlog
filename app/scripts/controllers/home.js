@@ -5,11 +5,18 @@
  * @date 2013.12.27
  * @author xuhua
  */
-BlogContrllers.controller('IndexCtrl',['$scope', '$http',function($scope, $http){
+BlogContrllers.controller('IndexCtrl',['$scope', '$http', '$routeParams', '$location',function($scope, $http, $routeParams, $location){
+	var pageNum = $routeParams.page || 1;
+
 	$scope.$parent.checkLogin();
 	$scope.articles = {};
-	$http.post('/article/getAllArticle', { pageNum: 1 }).success(function(data){
+	$http.post('/article/getAllArticle', { pageNum: pageNum }).success(function(data){
 		$scope.articles = data.articles;
+		$scope.paginate = {
+			totalPages: data.pageCount,
+			currentPage: pageNum,
+			itemsPerPage: 5
+		}
 	});
 
 }]);

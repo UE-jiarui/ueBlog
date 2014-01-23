@@ -15,13 +15,13 @@ exports.create = (req, res) ->
 	req.body.author_id = req.session["user"]._id
 	# 此处写Markdown文件，放在以用户id为名的文件夹中
 
-	# # For Windows
-	# myFolderUrl = config.site.MARKDOWN_DICT + '\\' + req.body.author_id;
-	# myFileUrl = myFolderUrl + "\\" + req.body.title + ".md"
+	# For Windows
+	myFolderUrl = config.site.MARKDOWN_DICT + '\\' + req.body.author_id;
+	myFileUrl = myFolderUrl + "\\" + req.body.title + ".md"
 
 	# For Mac
-	myFolderUrl = config.site.MARKDOWN_DICT + '\/' + req.body.author_id;
-	myFileUrl = myFolderUrl + "\/" + req.body.title + ".md"
+	# myFolderUrl = config.site.MARKDOWN_DICT + '\/' + req.body.author_id;
+	# myFileUrl = myFolderUrl + "\/" + req.body.title + ".md"
 	# 创建存放所有博客的根目录，部署后可去除
 	tools.mkdirArticleSync()
 
@@ -46,8 +46,19 @@ exports.getAll =  (req, res) ->
 		Blog.count {},(err, number) ->
 			res.json 
 				articles: blogs
-				pageCount: (number / config.site.PAGE_COUNT) + 1
+				pageCount: parseInt(number)
 
+# 获取一条博客记录
 exports.getOneById = (req, res) ->
 	BlogDao.getOneById req.params.id, (err, blog) ->
 		res.json article: blog
+
+# 删除一条博客记录
+exports.deleteOneById = (req, res) ->
+	blogId = req.params.id
+	# 判断操作者是否是博客作者
+	Blog.findById(blogId).populate('author_id').exec (err, article) ->
+		return res.json error: msg.MAIN.noneRight unless article.author_id == req.session['user']
+	
+	BlogDao.deleteOneById blogId, (flag) ->
+		res.json flag: flag
