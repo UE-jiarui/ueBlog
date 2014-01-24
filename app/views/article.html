@@ -26,7 +26,7 @@
 						<a class="delete_link" ng-click="deleteArticle()" href="javascript:void(0)"><i class="fa fa-trash-o">&nbsp;Delete</i></a></li>
 					</li>
 					<li class="i_b right pr20" ng-show="loginName==article.author_id.username">
-						<a class="modify_link" href="javascript:void(0)"><i class="fa fa-edit">&nbsp;Edit</i></a></li>
+						<a class="modify_link" ng-href="/post/{{article._id}}"><i class="fa fa-edit">&nbsp;Edit</i></a></li>
 					</li>
 				</ul>
 			</div>

@@ -30,14 +30,31 @@ exports.create = (req, res) ->
 		fs.mkdirSync myFolderUrl
 
 	# 将博客内容写入文件
-	fs.writeFile myFileUrl, req.body.content, (err) ->
+	fs.writeFile myFileUrl, req.body.articleContent, (err) ->
 		return res.json err: msg.ARTICLE.writeFileError if err
 		req.body.url = myFileUrl
 		newArticle = new Blog(req.body)
-		# 存数据库
-		newArticle.save (err, curArticle) ->
-			return res.json err: err if err
-			res.json article: curArticle
+
+		console.log newArticle
+
+		# 更新
+		if newArticle._id
+			query = id: newArticle._id
+			console.log query
+			updateArticle = 
+				title: newArticle.title
+				tags: newArticle.tags
+				update_at: new Date()
+			console.log updateArticle
+			Blog.update query, updateArticle, (err, curArticle) ->
+				console.log curArticle
+				return res.json err: msg.MAIN.error if err
+				res.json article: curArticle
+		# 新建
+		else
+			newArticle.save (err, curArticle) ->
+				return res.json err: err if err
+				res.json article: curArticle
 
 # 获取所有Blogs
 exports.getAll =  (req, res) ->

@@ -8,7 +8,7 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
         template: '<div class="pagedown-bootstrap-editor"></div>',
         link: function(scope, iElement, iAttrs, ngModel) {
             var editorUniqueId = nextId++;
-            var newElement = $compile('<div>' + '<div class="wmd-panel" ng-show="postArgs.isEdit">' + '<div id="wmd-button-bar-' + editorUniqueId + '"></div>' + '<textarea class="wmd-input form-control" rows="30" id="wmd-input-' + editorUniqueId + '" ng-model="article.content" placeholder="请输入文章内容">' + '</textarea>' + '</div>' + '<div id="wmd-preview-' + editorUniqueId + '" class="wmd-panel wmd-preview" ng-hide="postArgs.isEdit"></div>' + '</div>')(scope);
+            var newElement = $compile('<div>' + '<div class="wmd-panel" ng-show="postArgs.isEdit">' + '<div id="wmd-button-bar-' + editorUniqueId + '"></div>' + '<textarea class="wmd-input form-control" rows="30" id="wmd-input-' + editorUniqueId + '" ng-model="article.articleContent" placeholder="请输入文章内容">' + '</textarea>' + '</div>' + '<div id="wmd-preview-' + editorUniqueId + '" class="wmd-panel wmd-preview" ng-hide="postArgs.isEdit"></div>' + '</div>')(scope);
             iElement.html(newElement);
             // 初始化
             var converter = new Markdown.Converter();
