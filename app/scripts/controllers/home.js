@@ -10,6 +10,7 @@ BlogContrllers.controller('IndexCtrl',['$scope', '$http', '$routeParams', '$loca
 
 	$scope.$parent.checkLogin();
 	$scope.articles = {};
+	// 分页获取文章列表
 	$http.post('/article/getAllArticle', { pageNum: pageNum }).success(function(data){
 		$scope.articles = data.articles;
 		$scope.paginate = {

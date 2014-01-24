@@ -42,20 +42,17 @@ exports.login = (req, res) ->
       console.log user._id
       req.session["user"] = user
       res.cookie 'loginUser', user._id,
-        maxAge: 90000000
+        maxAge: 900000000
       res.json user
 
 # 注销
 exports.logout = (req, res) ->
-  req.session.destroy();
   res.clearCookie 'loginUser'
+  req.session.destroy();
   res.json success: msg.MAIN.success
 
 # 获取登录信息
 exports.getLoginUser = (req, res) ->
-  # User.findById '52bd292b421a85c031000003', (err, user) ->
-  #   console.log user
-
   if req.session["user"]
     return res.json req.session["user"] or {}
   if req.cookies.loginUser

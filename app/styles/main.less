@@ -1,10 +1,3 @@
-html, body{
-    
-    letter-spacing: 0.07em;
-}
-*{
-    outline:none;
-}
 @footerHeight: 60px;
 @deeper_background:#556270;
 @lighter_background: #c8c9c7;
@@ -107,7 +100,6 @@ article{
     margin-bottom: 50px;
    
 }
-
 .article_details, .article_details a{
     color: #666;
     font-size: 13px;
@@ -125,6 +117,8 @@ article{
 .right_half{
     margin-top: 22px;
 }
+
+/* Overwrite bootstrap. */
 .pagination > li.disabled{
     display:none;
 }
@@ -164,8 +158,6 @@ article{
      outline: 0;
      -webkit-box-shadow:none;
      box-shadow:none;
-    // -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-    // box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 .tab-ul{
     margin:0;
@@ -187,7 +179,6 @@ article{
     }
 }
 
-
 .navbar-inverse .navbar-brand{
     color:#fff;
     font-family: zeroes;
@@ -198,32 +189,32 @@ article{
   display: none !important;
 }
 
-[class^="icon-"], [class*=" icon-"]{
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    line-height: 14px;
-    vertical-align: text-top;
-    background-image: url("../images/glyphicons-halflings.png");
-    background-position: 14px 14px;
-    background-repeat: no-repeat;
-}
 // Markdown编辑器操作按钮
-.icon-bold {
-    background-position: -167px -48px;
-}
-.icon-italic {
-    background-position: -192px -48px;
-}
-.icon-link {
-    background-position: 0 0;
-}
-.icon-picture {
-    background-position: -456px -48px;
-}
-.icon-share-alt {
-    background-position: -336px -96px;
-}
+// [class^="icon-"], [class*=" icon-"]{
+//     display: inline-block;
+//     width: 14px;
+//     height: 14px;
+//     line-height: 14px;
+//     vertical-align: text-top;
+//     background-image: url("../images/glyphicons-halflings.png");
+//     background-position: 14px 14px;
+//     background-repeat: no-repeat;
+// }
+// .icon-bold {
+//     background-position: -167px -48px;
+// }
+// .icon-italic {
+//     background-position: -192px -48px;
+// }
+// .icon-link {
+//     background-position: 0 0;
+// }
+// .icon-picture {
+//     background-position: -456px -48px;
+// }
+// .icon-share-alt {
+//     background-position: -336px -96px;
+// }
 #wmd-help-button-0{
     display:none;
 }
@@ -269,6 +260,13 @@ textarea.wmd-input{
     .article_content, .article_details, header .container{
         padding:0;
     }
+
+    .head-line{
+        padding: 0 30px;
+        h2{
+            padding: 0 10px;
+        }
+    }
 }
 @media all and (max-width: 767px) and (min-width: 480px){
     header{
@@ -290,5 +288,8 @@ textarea.wmd-input{
     .container{
         padding: 0;
         width: 280px;
+    }
+    .head-line{
+        padding: 0 10px;
     }
 }

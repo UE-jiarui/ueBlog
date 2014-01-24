@@ -907,9 +907,9 @@
         var nonSuckyBrowserPreviewSet = function (text) {
             panels.preview.innerHTML = text;
             // Added by xuhua for highlight.
-            $('code').each(function(i, e) {
-                hljs.highlightBlock(e, null, true)
-            });
+            // $('code').each(function(i, e) {
+            //     hljs.highlightBlock(e, null, true)
+            // });
         }
 
         var previewSetter;

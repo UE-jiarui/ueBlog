@@ -8,17 +8,13 @@
 				</h2>
 			</div>
 			</div>
-			<div class="article-operate alignright">
+<!-- 			<div class="article-operate alignright">
 				<ul>
-				<!-- 	<li class="i_b pr20">
-						<a class="modify_link" href="#"><i class="fa fa-edit">&nbsp;Edit</i></a></li>
-					</li>
-					<li class="i_b">
-						<a class="delete_link" href="#"><i class="fa fa-trash-o">&nbsp;Delete</i></a></li>
-					</li> -->
+
 				</ul>
-			</div>
+			</div> -->
 			<p class="article_content" ng-bind-html="article.articleContent"></p>
+			<!-- 底部操作与时间等信息区域 -->
 			<div class="article_details">
 				<div class="dividing-line"></div>
 				<ul>
@@ -26,14 +22,13 @@
 					<li class="i_b pr20">&nbsp;By&nbsp;<a href="javascript:void(0)">{{article.author_id.username}}</a></li>
 					<li class="i_b pr20">
 					<a class="star_link" href="javascript:void(0)"><i class="fa fa-star-o">&nbsp;0 Stars</i></a></li>
-					<li class="i_b right" ng-show="loginName">
-						<a class="delete_link" href="javascript:void(0)"><i class="fa fa-trash-o">&nbsp;Delete</i></a></li>
+					<li class="i_b right" ng-show="loginName==article.author_id.username">
+						<a class="delete_link" ng-click="deleteArticle()" href="javascript:void(0)"><i class="fa fa-trash-o">&nbsp;Delete</i></a></li>
 					</li>
-					<li class="i_b right pr20" ng-show="loginName">
+					<li class="i_b right pr20" ng-show="loginName==article.author_id.username">
 						<a class="modify_link" href="javascript:void(0)"><i class="fa fa-edit">&nbsp;Edit</i></a></li>
 					</li>
 				</ul>
-				
 			</div>
 		</div>
 	</article>

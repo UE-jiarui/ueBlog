@@ -33,10 +33,10 @@ BlogDao =
 
 	# 删除一条博客记录
 	deleteOneById: (id, callback) ->
-		BlogModel.findOneAndRemove 
-			id: id
-			, (err, blog) ->
-				return callback msg.MAIN.error
+		BlogModel.findById id, (err, blog) ->
+			return callback msg.MAIN.error if err
+			blog.remove (err)->
+				return callback msg.MAIN.error if err
 				fs.unlink blog.url, (err) ->
 					callback true
 

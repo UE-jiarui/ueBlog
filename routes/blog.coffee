@@ -58,7 +58,6 @@ exports.deleteOneById = (req, res) ->
 	blogId = req.params.id
 	# 判断操作者是否是博客作者
 	Blog.findById(blogId).populate('author_id').exec (err, article) ->
-		return res.json error: msg.MAIN.noneRight unless article.author_id == req.session['user']
-	
-	BlogDao.deleteOneById blogId, (flag) ->
-		res.json flag: flag
+		return res.json error: msg.MAIN.noneRight unless article.author_id._id.toString() == req.session['user']._id.toString()
+		BlogDao.deleteOneById blogId, (flag) ->
+			res.json flag: flag

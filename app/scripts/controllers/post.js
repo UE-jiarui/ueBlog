@@ -17,8 +17,8 @@ BlogContrllers.controller('PostCtrl',['$scope', '$http', '$location','articleFor
 	$scope.post = function(){
 		// tags分隔成数组
 		$scope.article.tags = $scope.article.tags.split("/[,，;]/");
-		articleForCommon.save()
-		$http.post('/article',$scope.article).success(function(data){
+		// 保存
+		articleForCommon.save($scope.article, function(data){
 			if(data.err){
 				alert(data.err);
 			}

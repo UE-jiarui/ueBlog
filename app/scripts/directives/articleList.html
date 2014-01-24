@@ -17,11 +17,10 @@
 					<li class="i_b pr20">
 					<a class="star_link" href="#"><i class="fa fa-star-o">&nbsp;0 Stars</i></a></li>
 				</ul>
-				<!-- <p class="article_createTime"></p> -->
 			</div>
 		</div>
 	</article>
-	<section class="container">
+	<section class="container" ng-show="articles.length > 0">
 		<pagination on-select-page="pageChanged(page)" total-items="paginate.totalPages" items-per-page="paginate.itemsPerPage" page="paginate.currentPage" previous-text="‹" next-text="›" max-size="5"></pagination>
 	</section>
 </div>

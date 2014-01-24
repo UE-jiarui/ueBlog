@@ -26,7 +26,7 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
             });
 
             scope.$watch(iAttrs.ngModel, function(value, oldValue) {
-                console.log('ngModel changed', 'old: ', oldValue, 'new: ', value, editor, $wmdInput);
+                // console.log('ngModel changed', 'old: ', oldValue, 'new: ', value, editor, $wmdInput);
                 if(value){
                     $wmdInput.val(value);
                     editor.refreshPreview(); // forces the editor to re-render the preview according to the contents of the input, e.g. after you have programmatically changed the input box content. This method is only available after editor.run() has been called.

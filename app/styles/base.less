@@ -1,3 +1,10 @@
+/* Some common and base styles */
+html, body{
+    letter-spacing: 0.07em;
+}
+*{
+    outline:none;
+}
 .pr20{
 	padding-right:20px;
 }
@@ -42,20 +49,19 @@ ul{
 }
 
 p{
-	letter-spacing: 0.1em;
+	letter-spacing: 0.07em;
 }
 h1{
     color: #363636;
-    font-family: "Roboto Condensed Bold";
-    text-transform: uppercase;
+    font-family: "Roboto Condensed";
     font-weight: 700;
     font-size: 36px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.01em;
     line-height: 42px;
 }
 h2{
 	font-weight: 700;
-	font-family: "Roboto Condensed Bold";
+	font-family: "Roboto Condensed";
 }
 h3{
 	color: #556270;
@@ -72,4 +78,25 @@ a{
 }
 a:hover{
     text-decoration: none;
+}
+
+/* Fonts */
+@font-face {
+    font-family: "Roboto Condensed Bold";
+    src: url("fonts/RobotoCondensed-Bold.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Optima";
+    src: url("fonts/Optima-Regular.ttf.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto Condensed";
+    src: url("fonts/RobotoCondensed-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
 }
