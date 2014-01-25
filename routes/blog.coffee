@@ -9,7 +9,7 @@ fs = require('fs')
 path = require('path')
 marked = require('marked')
 
-# 新建博客
+# 新建、编辑博客
 exports.create = (req, res) ->
 	return res.json err: msg.MAIN.noSession unless req.session["user"]
 	req.body.author_id = req.session["user"]._id
@@ -39,17 +39,15 @@ exports.create = (req, res) ->
 
 		# 更新
 		if newArticle._id
-			query = id: newArticle._id
-			console.log query
+			query = _id: newArticle._id
 			updateArticle = 
 				title: newArticle.title
 				tags: newArticle.tags
 				update_at: new Date()
-			console.log updateArticle
-			Blog.update query, updateArticle, (err, curArticle) ->
-				console.log curArticle
+			Blog.update query, updateArticle, (err, numAffected) ->
+				console.log numAffected
 				return res.json err: msg.MAIN.error if err
-				res.json article: curArticle
+				res.json article: numAffected
 		# 新建
 		else
 			newArticle.save (err, curArticle) ->

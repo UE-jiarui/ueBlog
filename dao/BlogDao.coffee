@@ -12,7 +12,7 @@ BlogDao =
 	getAll: (page, callback) ->
 		start = tools.calcStart(page)
 		# 查询语句步骤分别是：查询所有博客，跳过前页的条目，限制一页数，查询博客作者
-		@model.find().skip(start).limit(config.site.PAGE_COUNT).sort('-create_at').populate('author_id').exec (err, arts)->
+		@model.find().skip(start).limit(config.site.PAGE_COUNT).sort('-update_at').populate('author_id').exec (err, arts)->
 			return callback err, null if err
 			i = 0
 			# 此处将Bson转换成Json一是避免中文乱码，二是对Json对象的操作可以顺利传到客户端
