@@ -8,10 +8,8 @@ BlogContrllers.controller('PostCtrl',['$scope', '$http', '$location','$routePara
 	// 判断是新建还是编辑
 	var articleId = $routeParams.articleId === "create" ? false : $routeParams.articleId;
 	if(articleId){
-			articleForCommon.get({id: articleId}, function(data){
+			articleForCommon.get({id: articleId, decode: true}, function(data){
 				$scope.article = data.article;
-				// Convert html to markdown.
-				$scope.article.articleContent = toMarkdown(data.article.articleContent);
 			})
 	} else {
 		$scope.article = {

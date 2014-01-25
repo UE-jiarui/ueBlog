@@ -24,11 +24,11 @@ BlogDao =
 					callback null, artsObj if ++i == arts.length
 	
 	# 获取一条博客记录
-	getOneById: (id, callback) ->
+	getOneById: (id, decode, callback) ->
 		BlogModel.findById(id).populate('author_id').exec (err, article) ->
 			artObj = JSON.parse(JSON.stringify(article))
 			fs.readFile artObj.url,{encoding:'utf-8'}, (err, data) ->
-					artObj.articleContent = marked(data)
+					artObj.articleContent = if decode then data else marked(data)
 					callback null, artObj
 
 	# 删除一条博客记录

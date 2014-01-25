@@ -35,8 +35,6 @@ exports.create = (req, res) ->
 		req.body.url = myFileUrl
 		newArticle = new Blog(req.body)
 
-		console.log newArticle
-
 		# 更新
 		if newArticle._id
 			query = _id: newArticle._id
@@ -45,7 +43,6 @@ exports.create = (req, res) ->
 				tags: newArticle.tags
 				update_at: new Date()
 			Blog.update query, updateArticle, (err, numAffected) ->
-				console.log numAffected
 				return res.json err: msg.MAIN.error if err
 				res.json article: numAffected
 		# 新建
@@ -65,7 +62,7 @@ exports.getAll =  (req, res) ->
 
 # 获取一条博客记录
 exports.getOneById = (req, res) ->
-	BlogDao.getOneById req.params.id, (err, blog) ->
+	BlogDao.getOneById req.params.id, req.query.decode or false, (err, blog) ->
 		res.json article: blog
 
 # 删除一条博客记录

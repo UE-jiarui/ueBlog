@@ -37,7 +37,8 @@ BlogSchema = new Schema(
     type: Date
     default: Date.now
   last_reply:
-    type: Schema.ObjectId
+    type: Schema.Types.ObjectId
+    ref: "User"
   last_reply_at:
     type: Date
     default: Date.now

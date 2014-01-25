@@ -16,7 +16,8 @@
     "font-awesome": "~4.0.3",
     "angular-translate": "~1.1.1",
     "pagedown": "https://github.com/ujifgc/pagedown.git",
-    "bootstrap": "~3.0.3"
+    "bootstrap": "~3.0.3",
+    "underscore": "~1.5.2"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",
