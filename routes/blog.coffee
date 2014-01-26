@@ -36,7 +36,7 @@ exports.create = (req, res) ->
 		newArticle = new Blog(req.body)
 
 		# 更新
-		if newArticle._id
+		if req.body._id
 			query = _id: newArticle._id
 			updateArticle = 
 				title: newArticle.title
