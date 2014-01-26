@@ -19,9 +19,8 @@ BlogDao =
 			# 然后读取文件中的文章内容
 			artsObj = JSON.parse(JSON.stringify(arts))
 			for art in artsObj
-				fs.readFile art.url,{encoding:'utf-8'}, (err, data) ->
-					artsObj[i].articleContent = marked(data)
-					callback null, artsObj if ++i == arts.length
+				artsObj[i].articleContent = marked(fs.readFileSync art.url,{encoding:'utf-8'})
+				callback null, artsObj if ++i == arts.length
 	
 	# 获取一条博客记录
 	getOneById: (id, decode, callback) ->
