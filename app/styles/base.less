@@ -1,56 +1,25 @@
 /* Some common and base styles */
-html, body{
-    letter-spacing: 0.07em;
-}
-*{
-    outline:none;
-}
-.pr20{
-	padding-right:20px;
-}
-.pl20{
-	padding-left:20px;
-}
-.clear{
-    clear: both;
-}
-.left{
-    float:left;
-}
-.right{
-    float: right;
-}
-.aligncenter{
-	text-align: center;
-}
-.alignright{
-	text-align: right;
-}
-.mtb80{
-	margin: 80px 0;
-}
-.mb20{
-	margin-bottom:20px;
-}
-.v-t{
-	vertical-align: top;
-}
+html, body{ letter-spacing: 0.07em; }
+// ::selection{ background: #cc0000; color: #fff; }
+*{ outline:none; }
+.pr20{ padding-right:20px; }
+.pl20{ padding-left:20px; }
+.clear{ clear: both; }
+.left{ float:left; }
+.right{ float: right; }
+.aligncenter{ text-align: center; }
+.alignright{ text-align: right; }
+.mtb80{ margin: 80px 0; }
+.mb20{ margin-bottom:20px; }
+.v-t{ vertical-align: top; }
 .animate-show {
   -webkit-transition:all linear 0.5s;
   transition:all linear 0.5s;
   opacity:1;
 }
-.animate-show.ng-hide{
-	opacity:0;
-}
-ul{
-	padding:0;
-	list-style:none;
-}
-
-p{
-	letter-spacing: 0.07em;
-}
+.animate-show.ng-hide{ opacity:0; }
+ul{ padding:0; list-style:none; }
+p{ letter-spacing: 0.07em; }
 h1{
     color: #363636;
     font-family: "Roboto Condensed";
@@ -59,10 +28,7 @@ h1{
     letter-spacing: 0.01em;
     line-height: 42px;
 }
-h2{
-	font-weight: 700;
-	font-family: "Roboto Condensed";
-}
+h2{ font-weight: 700; font-family: "Roboto Condensed"; }
 h3{
 	color: #556270;
 	font: 22px/30px 'Optima', sans-serif;
@@ -70,15 +36,9 @@ h3{
 	letter-spacing: 0.07em;
 	margin-bottom: 12px;
 }
-h2 a, h3 a, h4 a, h5 a, h6 a{
-	color: #556270;
-}
-a{
-    transition: all 0.1s ease 0.1s;
-}
-a:hover{
-    text-decoration: none;
-}
+h2 a, h3 a, h4 a, h5 a, h6 a{ color: #556270; }
+a{ transition: all 0.1s ease 0.1s; }
+a:hover{ text-decoration: none; }
 
 /* Fonts */
 @font-face {
@@ -93,7 +53,6 @@ a:hover{
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: "Roboto Condensed";
     src: url("fonts/RobotoCondensed-Regular.ttf");
