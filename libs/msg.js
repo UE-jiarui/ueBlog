@@ -25,6 +25,7 @@ module.exports = {
     ARTICLE: {
         articleDict: 'E:\\BlogArticle',
         writeFileError: '文件写入失败',
-        writeFileSuccess: '文件写入成功'
+        writeFileSuccess: '文件写入成功',
+        notExist: '文章不存在，可能已被删除'
     }　
 };

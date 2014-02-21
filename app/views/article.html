@@ -21,7 +21,7 @@
 					<li class="i_b"><i class="fa fa-clock-o">&nbsp;{{article.create_at | date: 'MMMM dd, yyyy'}}</i></li>
 					<li class="i_b pr20">&nbsp;By&nbsp;<a href="javascript:void(0)">{{article.author_id.username}}</a></li>
 					<li class="i_b pr20">
-					<a class="star_link" href="javascript:void(0)"><i class="fa fa-star-o">&nbsp;0 Stars</i></a></li>
+					<a class="star_link" ng-click="starArticle()" href="javascript:void(0)"><i class="fa fa-star-o">&nbsp;0 Stars</i></a></li>
 					<li class="i_b right" ng-show="loginName==article.author_id.username||loginName=='ueteam'">
 						<a class="delete_link" ng-click="deleteArticle()" href="javascript:void(0)"><i class="fa fa-trash-o">&nbsp;Delete</i></a></li>
 					</li>

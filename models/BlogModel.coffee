@@ -23,9 +23,7 @@ BlogSchema = new Schema(
   visit_count:
     type: Number
     default: 0
-  star_count:
-    tyoe: Number
-    default: 0
+  stared: Array
   collect_count:
     type: Number
     default: 0

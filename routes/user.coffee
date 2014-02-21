@@ -62,3 +62,11 @@ exports.getLoginUser = (req, res) ->
       return res.json user or {}
   else
     res.json {}    
+
+exports.modify = (req, res) ->
+  User.findOne
+      username: "yolo"
+    , (err, user) ->
+      console.log user
+      user.encryptPassword("5yedebeiai")
+      return 1222;

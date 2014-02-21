@@ -1,4 +1,6 @@
+/* 博客指令文件 */
 
+// Markdown编辑器
 BlogDirectives.directive("mdEditor", ['$compile', function($compile){
     var nextId = 0;
     var markdownConverter = new Markdown.Converter();
@@ -36,6 +38,7 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
         }
     }
 }])
+// 博客列表(包含分页)
 .directive("articleList",['$compile','$interval', '$location', function($compile, $interval, $location){
     return { 
         restrict: 'AE',
@@ -50,6 +53,7 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
         }
     }
 }])
+// 博客内容展示
 .directive("articleContent", ["$compile", function($compile){
     return {
         restrict: 'A',

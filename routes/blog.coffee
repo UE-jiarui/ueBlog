@@ -13,43 +13,10 @@ marked = require('marked')
 exports.create = (req, res) ->
 	return res.json err: msg.MAIN.noSession unless req.session["user"]
 	req.body.author_id = req.session["user"]._id
-	# 此处写Markdown文件，放在以用户id为名的文件夹中
 
-	# For Windows
-	myFolderUrl = config.site.MARKDOWN_DICT + '\\' + req.body.author_id;
-	myFileUrl = myFolderUrl + "\\" + req.body.title + ".md"
-
-	# For Mac
-	# myFolderUrl = config.site.MARKDOWN_DICT + '\/' + req.body.author_id;
-	# myFileUrl = myFolderUrl + "\/" + req.body.title + ".md"
-	# 创建存放所有博客的根目录，部署后可去除
-	tools.mkdirArticleSync()
-
-	# 如果该用户是第一次写博客，为他创建文件夹
-	if not fs.existsSync(myFolderUrl)
-		fs.mkdirSync myFolderUrl
-
-	# 将博客内容写入文件
-	fs.writeFile myFileUrl, req.body.articleContent, (err) ->
-		return res.json err: msg.ARTICLE.writeFileError if err
-		req.body.url = myFileUrl
-		newArticle = new Blog(req.body)
-
-		# 更新
-		if req.body._id
-			query = _id: newArticle._id
-			updateArticle = 
-				title: newArticle.title
-				tags: newArticle.tags
-				update_at: new Date()
-			Blog.update query, updateArticle, (err, numAffected) ->
-				return res.json err: msg.MAIN.error if err
-				res.json article: numAffected
-		# 新建
-		else
-			newArticle.save (err, curArticle) ->
-				return res.json err: err if err
-				res.json article: curArticle
+	BlogDao.saveBlog req.session["user"], req.body, (err, result) ->
+		return res.json err: err if err
+		res.json article: result
 
 # 获取所有Blogs
 exports.getAll =  (req, res) ->

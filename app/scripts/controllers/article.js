@@ -4,6 +4,10 @@ BlogContrllers.controller('ArticleCtrl',['$scope','$rootScope', '$http','$routeP
 	 $scope.articleId = $routeParams.articleId;
 	 $scope.articles = articleForCommon.get({id: $scope.articleId});
 
+	 $scope.starArticle = function(){
+	 	
+	 }
+
 	 // 删除博客
 	 $scope.deleteArticle = function(){
 	 		if(confirm("Are you sure?")){

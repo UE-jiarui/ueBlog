@@ -12,6 +12,8 @@ module.exports = (app) ->
   app.post '/article/getAllArticle', blog.getAll
   app.get '/article/:id', blog.getOneById
   app.delete '/article/:id', blog.deleteOneById
+  # app.post '/article/star/:id', blog.star
+  # app.post '/article/comment/:id', blog.comment
 
   # 为了使浏览器的上一步、下一步可用，并隐藏丑陋的地址栏上的 “#”
   # 共设置两处：

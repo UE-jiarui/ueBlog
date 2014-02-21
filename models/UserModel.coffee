@@ -23,8 +23,8 @@ UserSchema = new Schema(
   username:
     type: String
     unique: true
-
   hashed_password: String
+  staredBlog: Array
   create_date:
     type: Date
     default: Date.now
@@ -54,8 +54,7 @@ UserSchema.methods =
   @return {Boolean}
   ###
   authenticate: (password) ->
-    console.log @hashed_password
-    console.log @encryptPassword(password)
+    console.log password
     @encryptPassword(password) is @hashed_password
 
   ###
