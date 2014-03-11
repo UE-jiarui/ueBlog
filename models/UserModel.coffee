@@ -24,7 +24,6 @@ UserSchema = new Schema(
     type: String
     unique: true
   hashed_password: String
-  staredBlog: Array
   create_date:
     type: Date
     default: Date.now

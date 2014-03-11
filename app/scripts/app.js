@@ -13,7 +13,7 @@ var BlogDirectives = angular.module('ueBlogApp.directives', []);
 var BlogFilters = angular.module('ueBlogApp.filters', []);
 
 //@xuhua:尽量不要直接在Module中引入依赖，在分模块中分别引入子依赖
-var blogApp = angular.module('ueBlogApp', ['ngRoute', 'ui.bootstrap','ngSanitize','ngAnimate' , 'ueBlogApp.controllers', 'ueBlogApp.services', 'ueBlogApp.directives' , 'ueBlogApp.filters', 'ngResource', 'ngCookies'])
+var blogApp = angular.module('ueBlogApp', ['ngRoute', 'ui.bootstrap','ngSanitize','ngAnimate' , 'ueBlogApp.controllers', 'ueBlogApp.services', 'ueBlogApp.directives' , 'ueBlogApp.filters', 'ngResource', 'ngCookies']);
 blogApp.config(['$routeProvider', '$locationProvider',function ($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
@@ -30,16 +30,16 @@ blogApp.config(['$routeProvider', '$locationProvider',function ($routeProvider, 
     })
     .when('/blog/:articleId', {
       templateUrl: 'views/article.html',
-      controller: "ArticleCtrl"
+      controller: 'ArticleCtrl'
     })
-    .when("/blog/page/:page", {
+    .when('/blog/page/:page', {
       templateUrl: 'views/home.html',
       controller: 'IndexCtrl'
     })
     .otherwise({
       redirectTo: '/'
     });
-    $locationProvider.html5Mode(true);
-    // highlight代码缩进配置
-    hljs.tabReplace = '    '; 
+  $locationProvider.html5Mode(true);
+  // highlight代码缩进配置
+  hljs.tabReplace = '    '; 
 }]);

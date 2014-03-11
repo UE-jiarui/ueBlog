@@ -1,10 +1,12 @@
 BlogModel = require("./../models/BlogModel").Blog
 fs = require("fs")
 msg = require("./../libs/msg")
+tmpl = require("./../libs/tmpl")
 marked = require("marked")
 config = require("./../config")
 tools = require("./../libs/tools")
 nodemailer = require("nodemailer")
+moment = require "moment"
 
 BlogDao =
 	model: BlogModel
@@ -35,6 +37,8 @@ BlogDao =
 		fs.writeFile myFileUrl, blog.articleContent, (err) ->
 			return callback msg.ARTICLE.writeFileError,null if err
 			blog.url = myFileUrl
+			# Tags 以数组存储
+			blog.tags = blog.tags.toString().split ','
 			newArticle = new BlogModel(blog)
 
 			# 更新
@@ -44,23 +48,23 @@ BlogDao =
 					title: newArticle.title
 					tags: newArticle.tags
 					update_at: new Date()
-				Blog.update query, updateArticle, (err, numAffected) ->
+				BlogModel.update query, updateArticle, (err, numAffected) ->
 					return callback msg.MAIN.error,null if err
 					callback null, numAffected
 			# 新建
 			else
 				newArticle.save (err, curArticle) ->
 					return callback err,null if err
+
 					mailOptions = 
 					    from: "UEBlog"
-					    to: "414581694@qq.com"
-					    subject: "新博客通知"
-					    # text:  + ""
-					    html: "<p>Dear UEDer</p><p style='text-indent:20px;'>#{user.username}在前端开发组博客发表新文章啦！请进入<a href='http://192.168.19.65:5000/blog/#{curArticle._id}'>前端开发组博客</a>查看。</p>"
+					    to: config.receivers.join('@iflytek.com,') + '@iflytek.com'
+					    subject: "新博客通知：#{curArticle.title}"
+					    html: tmpl.mail(curArticle, user)
 
 					smtpTransport.sendMail mailOptions, (error, response) ->
 					    if error
-					        console.log("error" + error)
+					        console.log(error)
 					    else
 					        console.log("Message sent: " + response.message)
 
@@ -72,7 +76,7 @@ BlogDao =
 	getAll: (page, callback) ->
 		start = tools.calcStart(page)
 		# 查询语句步骤分别是：查询所有博客，跳过前页的条目，限制一页数，查询博客作者
-		@model.find().skip(start).limit(config.site.PAGE_COUNT).sort('-update_at').populate('author_id').exec (err, arts)->
+		@model.find().skip(start).limit(config.site.PAGE_COUNT).sort('-update_at').populate('author_id').populate('stared').exec (err, arts) ->
 			return callback err, null if err
 			i = 0
 			# 此处将Bson转换成Json一是避免中文乱码，二是对Json对象的操作可以顺利传到客户端
@@ -84,11 +88,12 @@ BlogDao =
 	
 	# 获取一条博客记录
 	getOneById: (id, decode, callback) ->
-		BlogModel.findById(id).populate('author_id').exec (err, article) ->
+		BlogModel.findById(id).populate('author_id').populate('stared').exec (err, article) ->
+			callback err, null if err
 			artObj = JSON.parse(JSON.stringify(article))
 			fs.readFile artObj.url,{encoding:'utf-8'}, (err, data) ->
-					artObj.articleContent = if decode then data else marked(data)
-					callback null, artObj
+				artObj.articleContent = if decode then data else marked(data)
+				callback null, artObj
 
 	# 删除一条博客记录
 	deleteOneById: (id, callback) ->
@@ -98,10 +103,12 @@ BlogDao =
 				return callback msg.MAIN.error if err
 				fs.unlink blog.url, (err) ->
 					callback true
-	# 标星
-	starOne: (id, content, callback) ->
-		BlogModel.findById id, (err, blog) ->
-			return callback msg.ARTICLE.notExist if err
+	
+	# 记录博客访问
+	visit: (blogId, option, callback) ->
+		BlogModel.findByIdAndUpdate blogId, option, (err, number) ->
+			return callback err, null if err
+			callback null, number
 			
 
 module.exports = BlogDao;

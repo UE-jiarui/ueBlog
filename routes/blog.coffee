@@ -20,7 +20,7 @@ exports.create = (req, res) ->
 
 # 获取所有Blogs
 exports.getAll =  (req, res) ->
-	pageNum = req.body.pageNum
+	pageNum = req.query.pageNum
 	BlogDao.getAll pageNum, (err, blogs) ->
 		Blog.count {},(err, number) ->
 			res.json 
@@ -30,6 +30,7 @@ exports.getAll =  (req, res) ->
 # 获取一条博客记录
 exports.getOneById = (req, res) ->
 	BlogDao.getOneById req.params.id, req.query.decode or false, (err, blog) ->
+		return res.json error: err if err
 		res.json article: blog
 
 # 删除一条博客记录
@@ -40,3 +41,21 @@ exports.deleteOneById = (req, res) ->
 		return res.json error: msg.MAIN.noneRight unless article.author_id._id.toString() == req.session['user']._id.toString() || req.session['user'].level <2
 		BlogDao.deleteOneById blogId, (flag) ->
 			res.json flag: flag
+
+# 博客访问记录
+exports.visit = (req, res) ->
+	option = $inc:
+			visit_count: 1
+	option.last_visit = req.session["user"]._id if req.session["user"]
+	BlogDao.visit req.params.id, option, (err, result) ->
+		return req.json error: err if err
+		res.json success: true
+
+# 博客点星
+exports.star = (req, res) ->
+	Blog.findByIdAndUpdate req.params.id, 
+		$push: 
+			stared: req.session["user"]._id
+	,(err, number) ->
+		return res.json error: err if err
+		res.json success: true

@@ -7,7 +7,7 @@ Blog Schema
 @date  2013.12.21
 @author xuhua
 ###
-BlogSchema = new Schema(
+BlogSchema = new Schema
   title: String
   categary: String
   url: String
@@ -17,13 +17,16 @@ BlogSchema = new Schema(
   top:
     type: Boolean
     default: false
-  reply_count:
-    type: Number
-    default: 0
   visit_count:
     type: Number
     default: 0
-  stared: Array
+  last_visit:
+    type: Schema.Types.ObjectId
+    ref: "User"
+  stared: [
+    type: Schema.Types.ObjectId
+    ref: 'User'
+    ]
   collect_count:
     type: Number
     default: 0
@@ -34,17 +37,14 @@ BlogSchema = new Schema(
   update_at:
     type: Date
     default: Date.now
-  last_reply:
+  comment_count:
+    type: Number
+    default: 0
+  last_comment:
     type: Schema.Types.ObjectId
     ref: "User"
-  last_reply_at:
+  last_comment_at:
     type: Date
     default: Date.now
-)
-
-# BlogSchema.virtual("articleContent").set((content) ->
-#   @articleContent = password
-# ).get ->
-#   @articleContent
 
 exports.Blog = mongoose.model("Blog", BlogSchema)

@@ -39,17 +39,19 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
     }
 }])
 // 博客列表(包含分页)
-.directive("articleList",['$compile','$interval', '$location', function($compile, $interval, $location){
+.directive("articleList",['$compile','$interval', '$location', 'starArticle', function($compile, $interval, $location, starArticle){
     return { 
         restrict: 'AE',
         replace: true,
         scope: { articles:'=' ,paginate:'=' },
-        templateUrl: '/scripts/directives/articleList.html',
+        templateUrl: '/scripts/directives/partials/articleList.html',
         link: function(scope, iElement, iAttrs){
           // 翻页跳转
           scope.pageChanged = function (pageNo) {
             $location.path("/blog/page/" + pageNo);
           };
+          // Star the blog.
+          scope.starArticle = starArticle;
         }
     }
 }])
@@ -72,57 +74,3 @@ BlogDirectives.directive("mdEditor", ['$compile', function($compile){
         }
     }
 }])
-
-
-/**
- * 富文本编辑器封装指令
- *
- */
-// BlogDirectives.directive('richTextEditor', function($location, $compile) {
-//     var self = this;
-//     var directive = {
-//         restrict: "A",
-//         replace: true,
-//         transclude: true,
-//         scope: {
-
-//         },
-//         template: "<div id='rich_text_editor'>" +
-//             "<textarea id=\"richtexteditor-content\" style=\"height:300px;width:100%\"></textarea>" +
-//             "</div>",
-
-//         link: function($scope, $element, $attrs) {
-//             $scope.editor = $('#richtexteditor-content').wysihtml5();
-
-//             // $compile($("#rich_text_editor"))($scope);
-
-//             //                        $scope.editor = new wysihtml5.Editor( "richtexteditor-content", {
-
-//             //                                toolbar : "richtexteditor-toolbar",
-//             //                              parserRules: wysihtml5ParserRules       
-//             //                    });
-
-//             $scope.$parent.$watch($attrs.content, function(newValue, oldValue) {
-
-//                 $scope.editor.innerHTML = newValue;
-//                 $scope.editor.data('wysihtml5').editor.composer.setValue( newValue || '' );
-//                 // $scope.editor.composer.setValue(newValue);
-//             });
-//             $compile($element.contents())($scope);
-
-//             $scope.cancel = function() {
-//                 $scope.$parent.cancel();
-//             }
-//             /* $scope.save = function() {
-//                     var currentTemplateContent = $encryption.encodeHtml( $scope.editor.getValue() );
-//                     $scope.$parent.currentTemplate.content = currentTemplateContent;
-//                     $scope.$parent.save();
-//             }
-//             */
-//             $scope.isClean = function() {
-//                 $scope.$parent.isClean();
-//             }
-//         }
-//     }
-//     return directive;
-// })

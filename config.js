@@ -24,5 +24,5 @@ module.exports = {
 		user: "iflytek.ueteam@gmail.com",
 		pass: "iflytekUE_Team"
 	},
-	sent_email: ["yunshi","jingdai","huihan2","zfli2","wbye","xypan2","yongwang","beiwan","xuhua","cndai","lycheng","ruijia","wqli","kpyu","huanzhang"]
+	receivers: ["yunshi","jingdai","huihan2","zfli2","wbye","xypan2","yongwang","beiwan","xuhua","lycheng","ruijia","wqli","kpyu","huanzhang"]
 }

@@ -9,8 +9,9 @@
     "connect-flash":"*",
     "colors": "*",
     "marked": "*",
-    "coffee-script":"*",
-    "nodemailer":"*"
+    "coffee-script":"1.6.3",
+    "nodemailer":"*",
+    "moment": "*"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

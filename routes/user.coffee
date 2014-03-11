@@ -39,7 +39,6 @@ exports.login = (req, res) ->
       unless user
         return res.json err: msg.USER.userNameNone
       return res.json err: msg.USER.userWrongPwd  unless user.authenticate(loginUser.password)
-      console.log user._id
       req.session["user"] = user
       res.cookie 'loginUser', user._id,
         maxAge: 900000000
@@ -59,14 +58,15 @@ exports.getLoginUser = (req, res) ->
     userId = req.cookies.loginUser
     User.findById userId, (err, user) ->
       req.session["user"] = user
+      res.cookie 'loginUser', user._id,
+        maxAge: 900000000
       return res.json user or {}
   else
-    res.json {}    
+    res.json {}
 
 exports.modify = (req, res) ->
   User.findOne
       username: "yolo"
     , (err, user) ->
-      console.log user
-      user.encryptPassword("5yedebeiai")
+      user.encryptPassword("1234")
       return 1222;

@@ -69,14 +69,14 @@
                 <div class="operate-area right">
                   <form class="header-form" id="login_form" name="login_form" novalidate ng-submit="login()" ng-show="loginShow">
                     <div class="form_item">
-                      <input type="text" class="form-input mb20" name="username" ng-model="loginUser.username" placeholder="Username / Email" required ng-keyup="login($event)" />
+                      <input type="text" class="form-input mb20" name="username" ng-model="submitUser.username" placeholder="Username / Email" required ng-keyup="login($event)" />
                     </div>
                     <div class="form_item">
-                      <input type="password" class="form-input" name="password" ng-model="loginUser.password" placeholder="Password" required ng-keypress="login($event)" />
+                      <input type="password" class="form-input" name="password" ng-model="submitUser.password" placeholder="Password" required ng-keypress="login($event)" />
                     </div>
                   </form>
-                  <a class="login-user i_b v-t" href="#">{{loginName}}</a>
-                  <a id="login_link" class="i_b v-t" href="#" ng-hide="loginName" ng-click="switchLoginShow()" title="Login">
+                  <a class="login-user i_b v-t" href="#" ng-bind="loginName"></a>
+                  <a id="login_link" class="i_b v-t" href="javascript:void(0)" ng-hide="loginName" ng-click="switchLoginShow()" title="Login">
                     <!-- L -->
                     <i class="fa fa-user"></i>
                   </a>
@@ -121,6 +121,7 @@
         <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
         <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="/bower_components/underscore/underscore-min.js"></script>
         <script src="/custome_lib/pagedown-bootstrap/Markdown.Converter.js"></script>
         <script src="/custome_lib/pagedown-bootstrap/Markdown.Sanitizer.js"></script>
         <script src="/custome_lib/pagedown-bootstrap/Markdown.Editor.js"></script>
