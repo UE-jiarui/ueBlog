@@ -24,5 +24,6 @@ module.exports = {
 		user: "iflytek.ueteam@gmail.com",
 		pass: "iflytekUE_Team"
 	},
-	receivers: ["yunshi","jingdai","huihan2","zfli2","wbye","xypan2","yongwang","beiwan","xuhua","lycheng","ruijia","wqli","kpyu","huanzhang"]
+	receivers: ["xuhua"]
+	// receivers: ["yunshi","jingdai","huihan2","zfli2","wbye","xypan2","yongwang","beiwan","xuhua","lycheng","ruijia","wqli","kpyu","huanzhang"]
 }

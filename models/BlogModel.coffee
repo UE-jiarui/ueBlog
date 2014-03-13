@@ -37,9 +37,9 @@ BlogSchema = new Schema
   update_at:
     type: Date
     default: Date.now
-  comment_count:
-    type: Number
-    default: 0
+  # comments:[
+    
+  # ]
   last_comment:
     type: Schema.Types.ObjectId
     ref: "User"
